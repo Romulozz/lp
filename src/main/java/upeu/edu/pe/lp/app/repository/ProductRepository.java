@@ -1,4 +1,4 @@
-package app.repository;
+package upeu.edu.pe.lp.app.repository;
 
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;

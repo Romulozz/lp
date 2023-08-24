@@ -1,4 +1,4 @@
-package app.service;
+package upeu.edu.pe.lp.app.service;
 
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
