@@ -8,13 +8,9 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
     private final ProductCrudRepository productCrudRepository;
-    private final ProductEntity productEntity;
-    private final UserEntity userEntity;
 
-    public ProductRepositoryImpl(ProductCrudRepository productCrudRepository, ProductEntity productEntity, UserEntity userEntity) {
+    public ProductRepositoryImpl(ProductCrudRepository productCrudRepository) {
         this.productCrudRepository = productCrudRepository;
-        this.productEntity = productEntity;
-        this.userEntity = userEntity;
     }
 
     @Override
@@ -24,7 +20,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Iterable<ProductEntity> getProductsByUser(UserEntity user) {
-        return productCrudRepository.findByUserEntity(userEntity);
+        return productCrudRepository.findByUserEntity(user);
     }
 
     @Override
@@ -34,7 +30,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public ProductEntity saveProduct(ProductEntity product) {
-        return productCrudRepository.save(productEntity);
+        return productCrudRepository.save(product);
     }
 
     @Override

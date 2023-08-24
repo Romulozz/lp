@@ -1,12 +1,13 @@
 package upeu.edu.pe.lp.app.service;
 
+import upeu.edu.pe.lp.app.repository.ProductRepository;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 public class ProductService {
-    private final ProductService productRepository;
+    private final ProductRepository productRepository;
 
-    public ProductService(ProductService productRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
