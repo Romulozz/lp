@@ -13,12 +13,9 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    @Getter
     private LocalDateTime date;
-    @Getter
     private BigDecimal totalAmount;
 
-    @Getter
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;

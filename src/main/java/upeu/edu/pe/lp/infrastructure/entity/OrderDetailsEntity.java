@@ -11,20 +11,23 @@ public class OrderDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    @Getter
     private Integer quantity;
 
-    @Getter
     @ManyToOne
     @JoinColumn(name = "orders_id")
     private OrderEntity orderEntity;
 
-    @Getter
     @ManyToOne
     @JoinColumn(name = "products_id")
     private ProductEntity productEntity;
 
     public OrderDetailsEntity() {
+    }
+
+    public OrderDetailsEntity(Integer quantity, OrderEntity orderEntity, ProductEntity productEntity) {
+        this.quantity = quantity;
+        this.orderEntity = orderEntity;
+        this.productEntity = productEntity;
     }
 
     public Integer getId() {
