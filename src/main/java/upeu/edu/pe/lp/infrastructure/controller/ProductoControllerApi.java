@@ -3,6 +3,7 @@ package upeu.edu.pe.lp.infrastructure.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
@@ -20,8 +21,9 @@ public class ProductoControllerApi {
 
     //crear productos
     @PostMapping("/save-product")
-    public String saveProduct (@RequestBody ProductEntity productEntity){
-        return productService.saveProduct(productEntity).toString();
+    public String saveProduct (@RequestBody ProductEntity productEntity,@RequestParam MultipartFile multipartFile){
+        // return productService.saveProduct(productEntity).toString();
+        return null;
     }
 
     //ver productos
@@ -47,7 +49,8 @@ public class ProductoControllerApi {
         productActual.setName(product.getName());
         productActual.setPrice(product.getPrice());
         productActual.setUserEntity(product.getUserEntity());
-        return productService.saveProduct(productActual);
+        //return productService.saveProduct(productActual);
+        return null;
         // log.info("Product obtenido: {}", product);
         //model.addAttribute("product", product);
         //return "admin/products/edit";

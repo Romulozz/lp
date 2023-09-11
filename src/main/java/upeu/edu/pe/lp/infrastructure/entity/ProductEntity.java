@@ -13,23 +13,14 @@ public class ProductEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Getter
     private String code;
-    @Getter
     private String name;
-    @Getter
     private String description;
-    @Getter
     private String image;
-    @Getter
     private BigDecimal price;
 
-    @Getter
     private LocalDateTime dataCreated;
-    @Getter
     private LocalDateTime dataUpdated;
-
-    @Getter
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
@@ -38,32 +29,72 @@ public class ProductEntity {
         this.setCode(UUID.randomUUID().toString());
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public void setImage(String image) {
         this.image = image;
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public LocalDateTime getDataCreated() {
+        return dataCreated;
     }
 
     public void setDataCreated(LocalDateTime dataCreated) {
         this.dataCreated = dataCreated;
     }
 
+    public LocalDateTime getDataUpdated() {
+        return dataUpdated;
+    }
+
     public void setDataUpdated(LocalDateTime dataUpdated) {
         this.dataUpdated = dataUpdated;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 
     public void setUserEntity(UserEntity userEntity) {
