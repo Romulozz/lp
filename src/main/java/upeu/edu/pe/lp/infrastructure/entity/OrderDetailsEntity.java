@@ -1,7 +1,7 @@
 package upeu.edu.pe.lp.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+
 
 
 @Entity
