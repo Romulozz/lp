@@ -29,7 +29,7 @@ public class ProductService {
     public ProductEntity getProductById(Integer id){
         return productRepository.getProductById(id);
     }
-    public ProductEntity saveProduct(ProductEntity product, MultipartFile multipartFile) throws IOException {
+    public ProductEntity savProduct(ProductEntity product, MultipartFile multipartFile) throws IOException {
         if (product.getId() == null){
             UserEntity user = new UserEntity();
             user.setId(1);

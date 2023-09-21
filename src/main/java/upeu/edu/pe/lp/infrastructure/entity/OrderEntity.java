@@ -15,17 +15,13 @@ public class OrderEntity {
     private Integer id;
 
     @Column(name = "order_date")
-    private LocalDateTime date;
+    private LocalDateTime orderDate;
     private BigDecimal totalAmount;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
 
-    private String customerName;
-
-    @Column(name = "order_status")
-    private String orderStatus;
 
     public OrderEntity() {
     }
@@ -38,16 +34,15 @@ public class OrderEntity {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getOrderDate() {
+        return orderDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
     }
 
     public BigDecimal getTotalAmount() {
-
         return totalAmount;
     }
 
@@ -61,21 +56,5 @@ public class OrderEntity {
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
     }
 }

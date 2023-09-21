@@ -1,27 +1,33 @@
 package upeu.edu.pe.lp.app.service;
 
+
 import upeu.edu.pe.lp.app.repository.OrderRepository;
 import upeu.edu.pe.lp.infrastructure.entity.OrderEntity;
+import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
-import java.time.LocalDateTime;
-import java.util.List;
+
 
 public class OrderService {
+
     private final OrderRepository orderRepository;
 
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
-    public List<OrderEntity> findOrdersByOrderDate(LocalDateTime date) {
-        return orderRepository.findByDate(date);
+    public Iterable<OrderEntity> getOrders(){
+        return orderRepository.getOrders();
     }
-
-    public Long countOrdersByCustomerName(String customerName) {
-        return orderRepository.countByCustomerName(customerName);
+    public Iterable<OrderEntity> getOrdersByUser(UserEntity user){
+        return orderRepository.getOrdersByUser(user);
     }
-
-    public List<OrderEntity> findOrdersByCustomerNameAndOrderStatus(String customerName, String orderStatus) {
-        return orderRepository.findByCustomerNameAndOrderStatus(customerName, orderStatus);
+    public OrderEntity getOrderById(Integer id){
+        return orderRepository.getOrderById(id);
+    }
+    public OrderEntity saveOrder(OrderEntity order) {
+        return orderRepository.saveOrder(order);
+    }
+    public void deleteOrderById(Integer id){
+        orderRepository.deleteProductById(id);
     }
 }
