@@ -3,8 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
+
+<div th:fragment ="main">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>code</th>
+            <th>image</th>
+            <th>precio</th>
+            <th>editar</th>
+            <th>eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button type="button" name="editar" class="btn btn-primary">Editar</button>
+            </td>
+            <td>
+                <button type="button" name="eliminar" class="btn btn-warning">Eliminar</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

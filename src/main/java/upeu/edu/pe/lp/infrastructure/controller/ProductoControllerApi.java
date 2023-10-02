@@ -1,12 +1,16 @@
 package upeu.edu.pe.lp.infrastructure.controller;
 
+import org.slf4j.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
+
+import java.io.IOException;
 
 
 @Controller
@@ -14,53 +18,48 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 public class ProductoControllerApi {
 
     private final ProductService productService;
+    private final Logger log = LoggerFactory.getLogger(ProductoControllerApi.class);
 
     public ProductoControllerApi(ProductService productService) {
         this.productService = productService;
     }
 
-    //crear productos
+    //crear nuevo producto
+    @GetMapping("/create")
+    public String create(){
+        return "admin/products/create";
+    }
+    //guardar producto
     @PostMapping("/save-product")
-    public String saveProduct (@RequestBody ProductEntity productEntity,@RequestParam MultipartFile multipartFile){
-        // return productService.saveProduct(productEntity).toString();
-        return null;
+    public String saveProduct(ProductEntity product,@RequestParam("img")MultipartFile multipartFile) throws IOException {
+        log.info("Nombre de producto: {}", product);
+        productService.savProduct(product, multipartFile);
+        return "admin/products/create";
+        //return "redirect:/admin";
     }
 
-    //ver productos
     @GetMapping("/show")
-    public Iterable <ProductEntity> showProduct(){
+    public String showProduct(Model model){
+        //log.info("id user desde la variable de session: {}");
         UserEntity user = new UserEntity();
         user.setId(1);
-        return productService.getProductsByUser(user);
+        Iterable<ProductEntity> products = productService.getProductsByUser(user);
+        model.addAttribute("products", products);
+        return "admin/products/show";
     }
 
-    //buscar producto por id
-    @GetMapping("/show/{id}")
-    public ProductEntity show(@PathVariable Integer id){
-        return productService.getProductById(id);
+
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable Integer id, Model model){
+        ProductEntity product = productService.getProductById(id);
+        log.info("Product obtenido: {}", product);
+        model.addAttribute("product",product);
+        return "admin/products/edit";
     }
 
-    //editar un product
-    @PutMapping("/edit/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ProductEntity editProduct(@RequestBody ProductEntity product, @PathVariable Integer id) {
-        ProductEntity productActual = productService.getProductById(id);
-        productActual.setDescription(product.getDescription());
-        productActual.setName(product.getName());
-        productActual.setPrice(product.getPrice());
-        productActual.setUserEntity(product.getUserEntity());
-        //return productService.saveProduct(productActual);
-        return null;
-        // log.info("Product obtenido: {}", product);
-        //model.addAttribute("product", product);
-        //return "admin/products/edit";
-    }
-
-    //eliminar un product
-    @DeleteMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable Integer id) {
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Integer id){
         productService.deleteProductById(id);
-        // return "redirect:/admin/products/show";
+        return "redirect:/admin/products/show";
     }
 }
