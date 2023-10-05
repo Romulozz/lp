@@ -12,7 +12,7 @@ import upeu.edu.pe.lp.infrastructure.entity.CategoryEntity;
  * @author DIEGO
  */
 public class CategoryService {
-    private final CategoryRepository categoryRepository;
+      private final CategoryRepository categoryRepository;
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
@@ -31,5 +31,6 @@ public class CategoryService {
        categoryRepository.deleteCategoryById(id);
         
     }
+    
     
 }
