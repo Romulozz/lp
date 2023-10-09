@@ -8,16 +8,19 @@
         <h1 class="display-3">Bienvenido a tu tienda en linea!!! </h1>
     </header>
 
-
-    <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4" th:each="product: ${products}">
-            <div class="card h-100">
-                <img class="card-img-top" th:src="@{images/{img} (img = ${product.image})}" alt="alt" />
-                <div class="card-body">
-                    <p class="card-text" th:text="${product.name }"> Nombre del producto</p>
-                </div>
-                <div class="card-footer">
-                    <a class="btn btn-success">Ver Producto</a>
+    <!--Añadiendo solo de presentacion para tarea-->
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-lg-3 col-md-6 mb-4" th:each="product: ${products}">
+                <div class="card h-100">
+                    <img class="card-img-top" th:src="@{images/{img} (img = ${product.image})}" alt="alt"/>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${product.name }"> Nombre del producto</p>
+                        <p class="card-text" th:text="${product.price }"> Nombre del producto</p>
+                    </div>
+                    <div class="card-footer">
+                        <a th:href="@{/home/{id} (id=${product.id})}" class="btn btn-success">Ver Producto</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,10 +38,13 @@
     }
 
     .footer {
-        position: absolute;
         bottom: 0px;
         height: 60px;
         width: 100%;
     }
+    .card-text{
+        font-family: "JetBrains Mono ExtraBold";
+    }
+
 
 </style>

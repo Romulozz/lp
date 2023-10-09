@@ -6,10 +6,6 @@ package upeu.edu.pe.lp.app.repository;
 
 import upeu.edu.pe.lp.infrastructure.entity.CategoryEntity;
 
-/**
- *
- * @author Luki
- */
 public interface CategoryRepository {
     
     Iterable<CategoryEntity> saveCategory();

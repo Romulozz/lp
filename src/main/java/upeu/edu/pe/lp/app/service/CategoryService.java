@@ -7,10 +7,7 @@ package upeu.edu.pe.lp.app.service;
 import upeu.edu.pe.lp.app.repository.CategoryRepository;
 import upeu.edu.pe.lp.infrastructure.entity.CategoryEntity;
 
-/**
- *
- * @author DIEGO
- */
+
 public class CategoryService {
       private final CategoryRepository categoryRepository;
 

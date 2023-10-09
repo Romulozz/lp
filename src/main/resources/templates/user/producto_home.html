@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{user/template_user::head}"></head>
+<body>
+<div th:insert="~{user/template_user::header}"></div>
+<div class="container">
+    <header class="jumbotron my-4">
+        <h1 class="display-3">Detalles del Producto</h1>
+    </header>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <img class="card-img-top product-img  mx-auto d-block" th:src="@{'/images/' + ${producto.image}}" alt="alt"/>
+        </div>
+        <div class="col-lg-6">
+            <h2 th:text="${producto.name}"></h2>
+            <p th:text="${producto.description}"></p>
+            <p th:text="'Precio: $' + ${producto.price}"></p>
+            <a class="btn btn-success">Agregar al carrito</a>
+            <!-- Agrega más detalles del producto aquí -->
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+<div class="footer" th:insert="~{user/template_user::footer}"></div>
+
+</html>
+<style>
+    .body {
+        position: relative;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        height: 60px;
+        width: 100%;
+    }
+    .product-img{
+        max-height: 400px;
+        max-width: 60%;
+
+    }
+
+</style>
