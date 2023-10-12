@@ -29,7 +29,7 @@
             <td th:text="${producto.description}"></td>
             <td th:text="${producto.price}"></td>
             <td>
-                <a class="btn btn-warning">Editar</a>
+                <a class="btn btn-warning" th:href="@{/admin/products/edit}">Editar</a>
             </td>
             <td>
                 <a class="btn btn-primary">Inventario</a>
@@ -43,12 +43,7 @@
         </tbody>
     </table>
 
-<<<<<<< HEAD
-   <a class="btn btn-secondary" th:href="@{/admin/products/create}">Crear producto</a>
-=======
    <a type="button" class="btn btn-secondary" th:href="@{/admin/products/create}">Crear producto</a>
->>>>>>> 166dccf0c0142ab584a93a0122256386b820b9ec
-
 
 </div>
 
