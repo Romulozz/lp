@@ -3,6 +3,10 @@
 <head th:insert="~{admin/template_admin::head_admin}"></head>
 <body>
 <div th:insert="~{admin/template_admin::header_admin}"></div>
+
+
+
+
 <div class="container">
     <header class="jumbotron my-4">
         <h1 class="display-3">Bienvenido a tu tienda en linea!!! </h1>
@@ -39,11 +43,14 @@
         </tbody>
     </table>
 
-   <button type="button" class="btn btn-secondary">Secondary</button>
+   <button type="button" class="btn btn-secondary" th:href="@{/admin/products/create}">Crear producto</button>
+
 
 </div>
 
 </body>
+
+
 <div class="footer" th:insert="~{admin/template_admin::footer_admin}"></div>
 </html>
 <style>

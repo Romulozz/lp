@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 @Controller
-@RequestMapping("/api/v1/product/")
+@RequestMapping("/admin/products")
 public class ProductoControllerApi {
 
     private final ProductService productService;
