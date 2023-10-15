@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 @Controller
-@RequestMapping("/api/v1/product/")
+    @RequestMapping("/admin/products")
 public class ProductoControllerApi {
 
     private final ProductService productService;
@@ -31,12 +31,12 @@ public class ProductoControllerApi {
     }
     //guardar producto
     @PostMapping("/save-product")
-    public String saveProduct(ProductEntity product,@RequestParam("img")MultipartFile multipartFile) throws IOException {
+    public String saveProduct(ProductEntity product, @RequestParam("img") MultipartFile multipartFile) throws IOException {
         log.info("Nombre de producto: {}", product);
         productService.savProduct(product, multipartFile);
-        return "admin/products/create";
-        //return "redirect:/admin";
+        return "redirect:/admin/products/show";
     }
+
 
     @GetMapping("/show")
     public String showProduct(Model model){
