@@ -12,9 +12,8 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 import java.io.IOException;
 
-
 @Controller
-    @RequestMapping("/admin/products")
+@RequestMapping("/admin/products")
 public class ProductoControllerApi {
 
     private final ProductService productService;
@@ -34,7 +33,14 @@ public class ProductoControllerApi {
     public String saveProduct(ProductEntity product, @RequestParam("img") MultipartFile multipartFile) throws IOException {
         log.info("Nombre de producto: {}", product);
         productService.savProduct(product, multipartFile);
-        return "redirect:/admin/products/show";
+
+        // Agregar un retraso de 1 segundo (1000 milisegundos) antes de redirigir
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/admin";
     }
 
 
@@ -60,6 +66,6 @@ public class ProductoControllerApi {
     @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Integer id){
         productService.deleteProductById(id);
-        return "redirect:/admin/products/show";
+        return "redirect:/admin";
     }
 }
