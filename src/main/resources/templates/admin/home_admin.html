@@ -36,7 +36,7 @@
 
             </td>
             <td >
-                <a class="btn btn-danger" th:href="@{'/admin/products/delete/' + ${producto.id}}">Eliminar</a>
+                <a class="btn btn-danger" href="#" th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
 
             </td>
         </tr>
@@ -46,6 +46,27 @@
    <a type="button" class="btn btn-secondary" th:href="@{/admin/products/create}">Crear producto</a>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:inline="javascript">
+    function showDeleteConfirmation(id) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Una vez eliminado, no podrás recuperar este producto.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirige a la URL de eliminación del producto
+                window.location.href = '/admin/products/delete/' + id;
+            }
+        });
+    }
+</script>
 
 </body>
 
