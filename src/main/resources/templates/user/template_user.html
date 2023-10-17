@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head th:fragment ="head">
-    <title>Ecommerce</title>
+    <title>Ecommerce-home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
 <div th:fragment ="header">
-    <nav class="navbar navbar-expand-lg bg-success">
+    <nav class="navbar navbar-expand-lg" style="background-color: #7E5C4D;">
         <div class="container-fluid">
             <a class="navbar-brand text-white" th:href="@{/home}">A Ram Sam Sam</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
 </div>
 </body>
 <div th:fragment ="footer">
-    <footer class="footer py-5 bg-success">
+    <footer class="footer py-3" style="background-color: #8F6B5A;">
         <div class="container">
             <p class="m-0 text-center text-white"> Aram Sam Sam Corporatiom &copy; 2023 </p>
             <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
