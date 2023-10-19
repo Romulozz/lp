@@ -16,7 +16,7 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
  */
 public class ProductoControllerApi {
     
-    @RestController
+@RestController
 @RequestMapping("/admin/product/")
 public class ProductControllerApi {
     
