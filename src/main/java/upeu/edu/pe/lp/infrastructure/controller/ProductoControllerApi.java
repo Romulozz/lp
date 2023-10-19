@@ -1,71 +1,64 @@
+
 package upeu.edu.pe.lp.infrastructure.controller;
 
-import org.slf4j.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
-import java.io.IOException;
-
-@CrossOrigin(origins = "http://localhost/4200")
-@Controller
-@RequestMapping("/api")
-public class ProductoControllerApi {
+@RestController
+@RequestMapping("/api/v1/product/")
+    public class ProductoControllerApi {
 
     private final ProductService productService;
-    private final Logger log = LoggerFactory.getLogger(ProductoControllerApi.class);
 
     public ProductoControllerApi(ProductService productService) {
         this.productService = productService;
     }
 
-    //crear nuevo producto
-    @GetMapping("/product")
-    public String create(){
-        return "admin/products/create";
-    }
-    //guardar producto
-    @PostMapping("/product")
-    public String saveProduct(ProductEntity product, @RequestParam("img") MultipartFile multipartFile) throws IOException {
-        log.info("Nombre de producto: {}", product);
-        productService.savProduct(product, multipartFile);
-
-        // Agregar un retraso de 1 segundo (1000 milisegundos) antes de redirigir
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return "redirect:/admin";
+    //crear product
+    @PostMapping("/save-product")
+    public String saveProduct(@RequestBody ProductEntity productEntity) {
+        // return productService.saveProduct(productEntity).toString();
+        return null;
     }
 
-
-    @GetMapping("/product")
-    public String showProduct(Model model){
-        //log.info("id user desde la variable de session: {}");
+    //ver productos
+    @GetMapping("/show")
+    public Iterable<ProductEntity> showProduct() {
         UserEntity user = new UserEntity();
         user.setId(1);
-        Iterable<ProductEntity> products = productService.getProductsByUser(user);
-        model.addAttribute("products", products);
-        return "admin/products/show";
+        return productService.getProductsByUser(user);
     }
 
-
-    @GetMapping("/product/{id}")
-    public String editProduct(@PathVariable Integer id, Model model){
-        ProductEntity product = productService.getProductById(id);
-        log.info("Product obtenido: {}", product);
-        model.addAttribute("product",product);
-        return "admin/products/edit";
+    //buscar producto por Id
+    @GetMapping("/show/{id}")
+    public ProductEntity show(@PathVariable Integer id) {
+        return productService.getProductById(id);
     }
 
-    @GetMapping("/product/{id}")
-    public String deleteProduct(@PathVariable Integer id){
+    //editar un product
+    @PutMapping("/edit/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProductEntity editProduct(@RequestBody ProductEntity product, @PathVariable Integer id) {
+        ProductEntity productActual = productService.getProductById(id);
+        productActual.setDescription(product.getDescription());
+        productActual.setName(product.getName());
+        productActual.setPrice(product.getPrice());
+        productActual.setUserEntity(product.getUserEntity());
+        // return productService.saveProduct(productActual);
+        return null;
+        // log.info("Product obtenido: {}", product);
+        //model.addAttribute("product", product);
+        //return "admin/products/edit";
+    }
+
+    //eliminar un product
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable Integer id) {
         productService.deleteProductById(id);
-        return "redirect:/admin";
+        // return "redirect:/admin/products/show";
     }
 }
