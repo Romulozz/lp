@@ -1,5 +1,5 @@
-
 package upeu.edu.pe.lp.infrastructure.controller;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +9,11 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 @RestController
 @RequestMapping("/api/v1/product/")
-    public class ProductoControllerApi {
+public class ProductControllerApi {
 
     private final ProductService productService;
 
-    public ProductoControllerApi(ProductService productService) {
+    public ProductControllerApi(ProductService productService) {
         this.productService = productService;
     }
 
@@ -61,4 +61,5 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
         productService.deleteProductById(id);
         // return "redirect:/admin/products/show";
     }
+
 }
