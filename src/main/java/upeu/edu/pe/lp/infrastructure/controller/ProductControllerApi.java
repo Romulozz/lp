@@ -7,8 +7,10 @@ import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/product/")
+@RequestMapping("api")
 public class ProductControllerApi {
 
     private final ProductService productService;
@@ -18,14 +20,14 @@ public class ProductControllerApi {
     }
 
     //crear product
-    @PostMapping("/save-product")
+    @PostMapping("/product")
     public String saveProduct(@RequestBody ProductEntity productEntity) {
         // return productService.saveProduct(productEntity).toString();
         return null;
     }
 
     //ver productos
-    @GetMapping("/show")
+    @GetMapping("/product")
     public Iterable<ProductEntity> showProduct() {
         UserEntity user = new UserEntity();
         user.setId(1);
@@ -33,13 +35,13 @@ public class ProductControllerApi {
     }
 
     //buscar producto por Id
-    @GetMapping("/show/{id}")
+    @GetMapping("/product/{id}")
     public ProductEntity show(@PathVariable Integer id) {
         return productService.getProductById(id);
     }
 
     //editar un product
-    @PutMapping("/edit/{id}")
+    @PutMapping("/product/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ProductEntity editProduct(@RequestBody ProductEntity product, @PathVariable Integer id) {
         ProductEntity productActual = productService.getProductById(id);
@@ -55,7 +57,7 @@ public class ProductControllerApi {
     }
 
     //eliminar un product
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/product/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable Integer id) {
         productService.deleteProductById(id);
