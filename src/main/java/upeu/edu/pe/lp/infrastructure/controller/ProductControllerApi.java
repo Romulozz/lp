@@ -9,7 +9,7 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RestController
+/*@RestController*/
 @RequestMapping("api")
 public class ProductControllerApi {
 
