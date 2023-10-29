@@ -1,50 +1,64 @@
 <!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{user/template_user::head}"></head>
-<body>
-<div th:insert="~{user/template_user::header}"></div>
-<div class="container">
-    <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido a tu tienda en linea!!! </h1>
-    </header>
+    <head th:insert ="~{user/template_user::head_user}">
+    </head>
+    <body>
 
-    <!--Añadiendo solo de presentacion para tarea-->
-    <div class="container">
-        <div class="row text-center justify-content-center">
-            <div class="col-lg-3 col-md-6 mb-4" th:each="product: ${products}">
-                <div class="card h-100">
-                    <img class="card-img-top" th:src="@{images/{img} (img = ${product.image})}" alt="alt"/>
-                    <div class="card-body">
-                        <p class="card-text" th:text="${product.name }"> Nombre del producto</p>
-                        <p class="card-text" th:text="${product.price }"> Nombre del producto</p>
-                    </div>
-                    <div class="card-footer">
-                        <a th:href="@{/home/{id} (id=${product.id})}" class="btn btn-success">Ver Producto</a>
-                    </div>
+        <div th:insert ="~{user/template_user::header_user}"></div>
+        <div class="container">
+
+            <pre>
+                
+
+            </pre>
+
+            <header class="jumbotron my-4 text-center">
+                <h1 class="display-3" style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; text-transform: uppercase; color: #333; text-shadow: 2px 2px 4px #888; margin: 0;">Marketplace Coffee</h1>
+            </header>
+
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4" th:each="product: ${products}">
+                    <div class="card h-100">
+                        <img style="max-width: 100%;  max-height: 200px;" th:src="@{images/{img} (img = ${product.image})}" alt="Imagen"/>
+
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.name}" style="font-size: 1.7rem;">Nombre del producto</h5>
+                            <p class="card-text" th:text="${product.description}" style="font-size: 1.2rem;">Descripción del producto</p>
+                            <div class="dropdown-divider" style="border-top: 1px solid #000; margin-bottom: 14px;"></div> 
+                            <p class="card-text" th:text="${'S/.' + product.price}" style="font-size: 1.3rem;">Precio</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <a th:href="@{/home/{id} (id=${product.id})}" class="btn" style="background-color: #5D3D27; color: white; font-size: 1.2rem; padding: 10px 20px; text-decoration: none;">Ver Producto</a>     
+                        </div>
+                    </div> 
                 </div>
             </div>
+
         </div>
-    </div>
 
 
-</div>
+    </body>
 
-</body>
-<div class="footer" th:insert="~{user/template_user::footer}"></div>
+    <div class="footer" th:insert ="~{user/template_user::footer_user}"></div>
+
+    <style>
+
+
+        .body{
+            position: relative;
+        }
+        .footer{
+            position: absolute;
+            bottom:0px;
+            height: 60px;
+            width: 100%;
+        }
+
+    </style>
+
 </html>
-<style>
-    .body {
-        position: relative;
-    }
-
-    .footer {
-        bottom: 0px;
-        height: 60px;
-        width: 100%;
-    }
-    .card-text{
-        font-family: "JetBrains Mono ExtraBold";
-    }
-
-
-</style>
