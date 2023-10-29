@@ -29,27 +29,16 @@ public class ProductService {
     public ProductEntity getProductById(Integer id){
         return productRepository.getProductById(id);
     }
-    public ProductEntity savProduct(ProductEntity product, MultipartFile multipartFile) throws IOException {
+    public ProductEntity saveProductApi(ProductEntity product) throws IOException {
         if (product.getId() == null){
             UserEntity user = new UserEntity();
             user.setId(1);
             product.setDataCreated(LocalDateTime.now());
             product.setDataUpdated(LocalDateTime.now());
             product.setUserEntity(user);
-            product.setImage(uploadFile.upload(multipartFile));
             return productRepository.saveProduct(product);
         }else{
             ProductEntity productDB = productRepository.getProductById(product.getId());
-
-            //Actualizar la imagen del producto
-            if (multipartFile.isEmpty()){
-                product.setImage(productDB.getImage());
-            }else {
-                if(!productDB.getImage().equals("defaul.jpg")){
-                    uploadFile.delete(product.getImage());
-                }
-                product.setImage(uploadFile.upload(multipartFile));
-            }
 
             product.setCode(productDB.getCode());
             product.setUserEntity(productDB.getUserEntity());
