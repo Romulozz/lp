@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{admin/template_admin::head_admin}"></head>
-<body>
-<div th:insert="~{admin/template_admin::header_admin}"></div>
-<pre>
+    <head th:insert="~{admin/template_admin::head_admin}"></head>
+    <body>
+        <div th:insert="~{admin/template_admin::header_admin}"></div>
+        <pre>
     
 
+        </pre>
+        <div class="container">
+            <header class="jumbotron my-4">
+                <h1 class="display-3" style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; text-transform: uppercase; color: #333; text-shadow: 2px 2px 4px #888;">Inventario de Productos</h1>
+            </header>
 
-</pre>
-<div class="container">
-    <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido a tu tienda en linea!!! </h1>
-    </header>
+            <br>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Inventario</th>
-            <th scope="col">Eliminar</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="producto: ${products}">
-            <td th:text="${producto.name}"></td>
-            <td th:text="${producto.description}"></td>
-            <td th:text="${producto.price}"></td>
-            <td>
-                <a class="btn btn-warning"  th:href="@{'/admin/products/edit/' + ${producto.id}}">Editar</a>
-            </td>
-            <td>
-                <a class="btn btn-primary">Inventario</a>
+            <div class="table-container">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" <td class="text-center">Nombre</th>
+                            <th scope="col" <td class="text-center">Descripción</th>
+                            <th scope="col" <td class="text-center">Precio</th>
+                            <th scope="col" <td class="text-center">Editar</th>
+                            <th scope="col" <td class="text-center">Eliminar</th>
+                            <th scope="col" <td class="text-center">Inventario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="producto: ${products}">
+                            <td th:text="${producto.name}" style="text-align: center"></td>
+                            <td th:text="${producto.description}" style="text-align: center"></td>
+                            <td th:text="${producto.price}" style="text-align: center"></td>
 
-            </td>
-            <td >
-                <a class="btn btn-danger" href="#" th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
+                            <td style="text-align: center">
+                                <a class="btn btn-warning"  th:href="@{'/admin/products/edit/' + ${producto.id}}">Editar</a>
+                            </td>
 
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                            <td style="text-align: center">
+                                <a class="btn btn-danger" href="#" th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
+                            </td>
 
-   <a type="button" class="btn btn-secondary" th:href="@{/admin/products/create}">Crear producto</a>
+                            <td style="text-align: center">
+                                <a class="btn btn-primary">Inventario</a>
+                            </td>
 
-</div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script th:inline="javascript">
-    function showDeleteConfirmation(id) {
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: 'Una vez eliminado, no podrás recuperar este producto.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Redirige a la URL de eliminación del producto
-                window.location.href = '/admin/products/delete/' + id;
+            <br>
+
+            <a type="button" class="btn btn-secondary" th:href="@{/admin/products/create}">Crear producto</a>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script th:inline="javascript">
+            function showDeleteConfirmation(id) {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: 'Una vez eliminado, no podrás recuperar este producto.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirige a la URL de eliminación del producto
+                        window.location.href = '/admin/products/delete/' + id;
+                    }
+                });
             }
-        });
-    }
-</script>
+        </script>
 
-</body>
+    </body>
 
 
-<div class="footer" th:insert="~{admin/template_admin::footer_admin}"></div>
+    <div class="footer" th:insert="~{admin/template_admin::footer_admin}"></div>
 </html>
 <style>
     .body {
@@ -85,5 +92,73 @@
         height: 60px;
         width: 100%;
     }
+
+
+    /* Estilo para la tabla */
+    .table {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+    table th.text-center{
+        padding: 15px;
+    }
+    
+    .table th {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .table th, .table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    /* Estilo para los botones Editar, Eliminar e Inventario */
+    .table .btn {
+        padding: 8px 18px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+  
+    .table .btn-warning:hover {
+        background-color: #e0a23e;
+    }
+
+    
+    .table .btn-danger:hover {
+        background-color: #c54a4c;
+    }
+
+
+    .table .btn-primary:hover {
+        background-color: #4ba9d4;
+    }
+
+    /* Estilo para el botón "Crear producto" */
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 13px 22px;
+        font-size: 18px;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5c6b76;
+    }
+
+    .table-container {
+        max-height: 1000px; /* Establece la altura máxima deseada para que aparezca una barra de desplazamiento vertical si es necesario */
+        overflow-y: auto; /* Permite desplazamiento vertical */
+    }
+
+
+
 
 </style>
