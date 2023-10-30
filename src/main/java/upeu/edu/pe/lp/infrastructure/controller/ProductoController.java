@@ -29,7 +29,7 @@ public class ProductoController {
         return "admin/products/create";
     }
     //guardar producto
-    @PostMapping("/save-    product")
+    @PostMapping("/save-product")
     public String saveProduct(ProductEntity product, @RequestParam("img") MultipartFile multipartFile) throws IOException {
         log.info("Nombre de producto: {}", product);
         productService.saveProductApi(product);
