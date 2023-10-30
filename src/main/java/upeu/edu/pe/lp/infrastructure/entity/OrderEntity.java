@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table (name = "orders")
@@ -13,6 +14,8 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
+    private String numero;
+    private double total;
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
@@ -25,6 +28,9 @@ public class OrderEntity {
 
     public OrderEntity() {
     }
+
+ 
+    
 
     public Integer getId() {
         return id;
@@ -57,4 +63,22 @@ public class OrderEntity {
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
 }

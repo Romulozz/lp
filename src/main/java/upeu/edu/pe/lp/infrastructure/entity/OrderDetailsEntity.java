@@ -11,7 +11,11 @@ public class OrderDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private Integer quantity;
+    private String nombre;
+    private double cantidad;
+    private double precio;
+    private double total;
+   
 
     @ManyToOne
     @JoinColumn(name = "orders_id")
@@ -24,11 +28,18 @@ public class OrderDetailsEntity {
     public OrderDetailsEntity() {
     }
 
-    public OrderDetailsEntity(Integer quantity, OrderEntity orderEntity, ProductEntity productEntity) {
-        this.quantity = quantity;
+    public OrderDetailsEntity(Integer id, String nombre, double cantidad, double precio, double total, OrderEntity orderEntity, ProductEntity productEntity) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.total = total;
         this.orderEntity = orderEntity;
         this.productEntity = productEntity;
     }
+    
+
+
 
     public Integer getId() {
         return id;
@@ -38,12 +49,36 @@ public class OrderDetailsEntity {
         this.id = id;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public OrderEntity getOrderEntity() {
