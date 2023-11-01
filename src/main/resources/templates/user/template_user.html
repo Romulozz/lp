@@ -1,55 +1,115 @@
 <!DOCTYPE html>
-<html>
-<head th:fragment ="head">
-    <title>Ecommerce-home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-</head>
-<body>
-<div th:fragment ="header">
-    <nav class="navbar navbar-expand-lg" style="background-color: #4A2E1E;">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" th:href="@{/home}">A Ram Sam Sam</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: fit-content; margin-left: auto">
-                    <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Carrito</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mas opciones
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Historial</a></li>
-                            <li><a class="dropdown-item" href="#">Mis productos</a></li>
-                            <li><hr class="dropdown-divider"></li>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment ="head_user">
+        <title>Ecommerce-home</title>
+        <link rel="icon" href="../../../../../images/icono.png" type="image/jpeg">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <div th:fragment ="header_user">
+                <header style="background-image: url('../../../images/icons/fondo-img.png'); background-size: 100% auto; background-position: center; height:400px;">
+                    <div class="d-flex justify-content-center align-items-center h-100" >
+                        <h1 class="text-center text-white" style="font-size: 90px;">Hacemos que comprar <span style="display: block;">Sea un placer</span></h1>
+                    </div>
+                </header>
+
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8B562A; padding: 0">
+                <div class="container">
+                    <a class="navbar-brand text-white " href="/home" style="font-size: 25px;">
+                        <img th:src="@{../images/icons/logo.png}"  style="max-width: 200px; max-height: 70px; " alt="icono">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav" style="margin-left: auto;">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#"><i class="fas fa-search navbar-icon" style="font-size: 25px; margin-right: 15px; cursor: pointer;" ></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="../login-ad-us/login.html"><i class="fas fa-user navbar-icon" style="font-size: 25px; margin-right: 15px; cursor: pointer;"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart navbar-icon" style="font-size: 25px; cursor: pointer;"></i></a>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+                    </div>
+                </div>
+            </nav>
+
         </div>
-    </nav>
-</div>
-</body>
-<div th:fragment ="footer">
-    <footer class="footer py-3" style="background-color: #4A2E1E;">
-        <div class="container">
-            <p class="m-0 text-center text-white"> Aram Sam Sam Corporation &copy; 2023 </p>
-            <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+
+
+
+
+        <div th:fragment ="footer_user">
+            <footer class="footer " style="background-color: #8B562A; padding-bottom: 20px">
+                <div class="container">
+                    <div class="container text-center">
+                        <div style="display: inline-block; border-top: 2px solid white; width: 38.35%; margin-right: 20px;"></div>
+                        <h2 class="text-white" style="font-weight: bold; font-size: 50px; display: inline-block;">A ram sam sam</h2>
+                        <div style="display: inline-block; border-top: 2px solid white; width: 38.35%; margin-left: 20px;"></div>
+                    </div>
+                    <div class="d-flex justify-content-between text-white">
+                        <div>
+                            <h3 style="font-weight: bold">Contactenos</h3>
+                            <p>TARAPOTO-PERÚ</p>
+                            <p>654646454</p>
+                        </div>
+                        <div  class="text-center">
+                            <h3 style="font-weight: bold">Visitanos</h3>
+                            <div>
+                                <img th:src="@{../images/icons/icon_f.png}" alt="logo facebook" style="max-width: 70px;">
+                                <img th:src="@{../images/icons/icon_i.png}" alt="logo instamgram" style="max-width: 70px;">
+                                <img th:src="@{../images/icons/icon_t.png}" alt="logo tik tok" style="max-width: 70px;">
+                            </div>
+
+                        </div>
+                        <div>
+                            <h3 style="font-weight: bold">Enlaces</h3>
+                            <p>Enlace 1</p>
+                            <p>Enlace 2</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <h3 class="text-center" style="padding: 30px 0">A RAM SAM SAM COPORATION - TODOS LOS DERECHOS RESERVADOS</h3>
         </div>
-    </footer>
-</div>
+
+
+
+
+        <style>
+
+            body{
+                position: relative;
+            }
+            .footer{
+                bottom:0px;
+                height: 100%;
+                width: 100%;
+
+            }
+            div.text-center {
+                text-align: center;
+            }
+
+        </style>
+
+
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+
+    </body>
 </html>

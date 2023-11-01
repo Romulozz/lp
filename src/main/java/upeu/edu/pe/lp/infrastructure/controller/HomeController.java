@@ -39,6 +39,17 @@ public class HomeController {
 
         return "user/producto_home";
     }
+    
+    public String addCart(){
+        
+        
+        
+        return"user/carrito";
+    }
+    
+    
+    
+    
 
 
 }

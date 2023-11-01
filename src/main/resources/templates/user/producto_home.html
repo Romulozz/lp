@@ -1,48 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{user/template_user::head}"></head>
-<body>
-<div th:insert="~{user/template_user::header}"></div>
-<div class="container">
-    <header class="jumbotron my-4">
-        <h1 class="display-3">Detalles del Producto</h1>
-    </header>
+    <head th:insert="~{user/template_user::head_user}">
+    </head>
+    <body>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <img class="card-img-top product-img  mx-auto d-block" th:src="@{'/images/' + ${producto.image}}" alt="alt"/>
+        <div th:insert ="~{user/template_user::header_user}"></div>
+
+        <div class="container">
+            <header class="jumbotron my-4">
+                <h1 class="display-3">Detalles del Producto</h1>
+                </header>
+
+    
+       <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <a href="#"> <img class="img-fluid rounded"
+                th:src="@{'/images/' + ${producto.image}}"  alt="">
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <form th:action="@{/cart}" method="POST">
+                  <input type="hidden" th:value="${producto.id} " name="id">
+                <h2 class="card-title" th:text="${producto.name}"></h2>
+
+                <ul class="list-group">
+                  <li class="list-group-item"><h5 th:text="'Precio: ' + ${producto.price}"> </h5></li>
+                  <li class="list-group-item">
+                    <p th:text="'Descripcion: '+ ${producto.description} "> </p>
+                  </li>
+                  <li class="list-group-item"><h6>
+                    Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off"
+                    min="1" max="5" value="1">
+                  </h6></li>
+                </ul>
+                <br>
+
+
+                <button type="submit"  class="btn btn-dark">Añadir al carrito </button>
+
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6">
-            <h2 th:text="${producto.name}"></h2>
-            <p th:text="${producto.description}"></p>
-            <p th:text="'Precio: $' + ${producto.price}"></p>
-            <a class="btn btn-success">Agregar al carrito</a>
-            <!-- Agrega más detalles del producto aquí -->
-        </div>
-    </div>
+      </div>
+
+    
+    
+    
 
 
 
 </div>
 </body>
-<div class="footer" th:insert="~{user/template_user::footer}"></div>
+<div class="footer" th:insert="~{user/template_user::footer_user}"></div>
 
 </html>
 <style>
-    .body {
+    body{
         position: relative;
+        font-family: 'Karantina', sans-serif;
+        text-transform: uppercase;
     }
-
     .footer {
-        position: absolute;
         bottom: 0px;
-        height: 60px;
         width: 100%;
+        padding-top: 70px;
     }
-    .product-img{
-        max-height: 400px;
-        max-width: 60%;
 
-    }
 
 </style>

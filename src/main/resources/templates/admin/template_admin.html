@@ -1,51 +1,56 @@
 <!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment ="head_admin">
-    <title>Ecommerce-admin</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-</head>
-<body>
- 
-<div th:fragment ="header_admin">
-    <div th:fragment ="header_admin">
-        <nav class="navbar navbar-expand-lg bg-dark ">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" th:href="@{/home}">A Ram Sam Sam</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav" style="width: fit-content; margin-left: auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Más opciones
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Mis productos</a></li>
-                                <li><a class="dropdown-item" href="#">Categorias</a></li>
-                                <li><a class="dropdown-item" href="#">Usuarios</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-light" type="submit">Search</button>
-                    </form>
+    <head th:fragment ="head_admin">
+        <title>Ecommerce-admin</title>
+        <link rel="icon" href="../../../../../images/icono.png" type="image/jpeg">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div th:fragment ="header_admin">
+            
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand text-white" href="/home" style="font-size: 25px;">A Ram Sam Sam</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav" style="margin-left: auto;">
+                       <!--     <li class="nav-item">
+                                <a class="nav-link text-white" href="#"><i class="fas fa-search navbar-icon" style="font-size: 25px; margin-right: 15px; cursor: pointer;" ></i></a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="../login-ad-us/login.html"><i class="fas fa-user navbar-icon" style="font-size: 25px; margin-right: 15px; cursor: pointer;"></i></a>
+                            </li>
+                        <!--    <li class="nav-item">
+                                <a class="nav-link text-white" href="#"><i class="fas fa-shopping-cart navbar-icon" style="font-size: 25px; cursor: pointer;"></i></a>
+                            </li> -->
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
-
-</div>
-</body>
-<div th:fragment ="footer_admin">
-    <footer class="footer py-3 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white"> Aram Sam Sam Corporatiom &copy; 2023</p>
-            <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+            </nav>
+            
+            
         </div>
-    </footer>
-</div>
+        
+        
+    <div th:fragment ="footer_admin">
+        <footer class="footer py-3 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white" style="font-size: 20px;"> Aram Sam Sam Corporatiom &copy; Jald 2023</p> 
+                <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+            </div>
+        </footer>
+    </div>
+        
+    </body>
+    
 </html>

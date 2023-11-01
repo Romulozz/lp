@@ -29,10 +29,10 @@ public class ProductoController {
         return "admin/products/create";
     }
     //guardar producto
-    @PostMapping("/save-    product")
+    @PostMapping("/save-product")
     public String saveProduct(ProductEntity product, @RequestParam("img") MultipartFile multipartFile) throws IOException {
         log.info("Nombre de producto: {}", product);
-        productService.savProduct(product, multipartFile);
+        productService.saveProductApi(product);
 
         // Agregar un retraso de 1 segundo (1000 milisegundos) antes de redirigir
         try {

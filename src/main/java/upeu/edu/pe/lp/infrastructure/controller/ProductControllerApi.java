@@ -7,9 +7,11 @@ import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
+import java.io.IOException;
+
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RestController
+/*@RestController*/
 @RequestMapping("api")
 public class ProductControllerApi {
 
@@ -21,9 +23,10 @@ public class ProductControllerApi {
 
     //crear product
     @PostMapping("/product")
-    public String saveProduct(@RequestBody ProductEntity productEntity) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProductEntity saveProduct(@RequestBody ProductEntity productEntity) throws IOException {
         // return productService.saveProduct(productEntity).toString();
-        return null;
+        return productService.saveProductApi(productEntity);
     }
 
     //ver productos
@@ -43,14 +46,13 @@ public class ProductControllerApi {
     //editar un product
     @PutMapping("/product/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductEntity editProduct(@RequestBody ProductEntity product, @PathVariable Integer id) {
+    public ProductEntity editProduct(@RequestBody ProductEntity product, @PathVariable Integer id) throws IOException    {
         ProductEntity productActual = productService.getProductById(id);
         productActual.setDescription(product.getDescription());
         productActual.setName(product.getName());
         productActual.setPrice(product.getPrice());
         productActual.setUserEntity(product.getUserEntity());
-        // return productService.saveProduct(productActual);
-        return null;
+        return productService.saveProductApi(productActual);
         // log.info("Product obtenido: {}", product);
         //model.addAttribute("product", product);
         //return "admin/products/edit";
