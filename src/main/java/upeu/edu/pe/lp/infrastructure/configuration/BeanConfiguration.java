@@ -6,11 +6,13 @@ import upeu.edu.pe.lp.app.repository.OrderDetailsRepository;
 import upeu.edu.pe.lp.app.repository.OrderRepository;
 import upeu.edu.pe.lp.app.repository.ProductRepository;
 import upeu.edu.pe.lp.app.repository.StockRepository;
+import upeu.edu.pe.lp.app.repository.UserRepository;
 import upeu.edu.pe.lp.app.service.OrderDetailsService;
 import upeu.edu.pe.lp.app.service.OrderService;
 import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.app.service.StockService;
 import upeu.edu.pe.lp.app.service.UploadFile;
+import upeu.edu.pe.lp.app.service.UserService;
 
 @Configuration
 public class BeanConfiguration {
@@ -36,6 +38,11 @@ public class BeanConfiguration {
     @Bean
     public OrderDetailsService orderDetailsService(OrderDetailsRepository orderDetailsRepository){
         return new OrderDetailsService(orderDetailsRepository);
+    }
+    
+    @Bean
+    public UserService userService(UserRepository userRepository){
+        return new UserService( userRepository);
     }
     
 }
