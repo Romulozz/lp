@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Register</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    </head>
+    <body>
+                <form th:action="@{/register}" method="post" enctype="multipart/form-data">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="text" id="firstName" name="FirstName" class="form-control" />
+                        <label class="form-label" for="firstName">First name</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="text" id="LastName" name="LastName" class="form-control" />
+                        <label class="form-label" for="lastName">Last name</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="userName" name="userName" class="form-control" />
+                <label class="form-label" for="userName">Username</label>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="address" name="address" class="form-control" />
+                <label class="form-label" for="address">Address</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="email" name="email" class="form-control" />
+                <label class="form-label" for="email">Email</label>
+            </div>
+
+            <!-- Number input -->
+            <div class="form-outline mb-4">
+                <input type="number" id="phone" name="phone" class="form-control" />
+                <label class="form-label" for="phone">Phone</label>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="password" name="password" class="form-control"></textarea>
+                <label class="form-label" for="password">Password</label>
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+        </form>
+    </body>
+</html>
