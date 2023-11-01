@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{user/template_user::head_user}"></head>
-<body>
-<div th:insert="~{user/template_user::header_user}"></div>
-<div class="container">
-    <header class="jumbotron my-4">
-        <h1 class="display-3">Carrito</h1>
-    </header>
+    <head th:insert="~{user/template_user::head_user}">
+    </head>
+    <body>
+
+        <div th:insert ="~{user/template_user::header_user}"></div>
+
+        <div class="container">
+            <header class="jumbotron my-4">
+                <h1 class="display-3"></h1>
+                </header>
     
         <!-- Contenido -->
         <div class="card mb-4">
@@ -33,7 +36,7 @@
                   <td th:text="${dorden.cantidad}"></td>
                   
                   <td th:text="${dorden.total}"></td>
-                  <td><a th:href="@{/delete/cart/{id} ( id = ${dorden.producto.id})}" class="btn btn-danger">Quitar</a></td>
+                    <td><a th:href="@{/delete/cart/{id} ( id = ${dorden.productEntity.id})}" class="btn btn-danger">Quitar</a></td>
                 </tr>
               </tbody>
             </table>
@@ -44,7 +47,7 @@
 
             <ul class="list-group">
               <li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
-              <a href="resumenorden.html" class="btn btn-dark">Ver Orden</a>
+              <a href="" class="btn btn-dark">Ver Orden</a>
             </ul>
           </div>
 
@@ -58,24 +61,5 @@
 
 </div>
 </body>
-<div class="footer" th:insert="~{user/template_user::footer_user}"></div>
 
 </html>
-<style>
-    .body {
-        position: relative;
-    }
-
-    .footer {
-        position: absolute;
-        bottom: 0px;
-        height: 60px;
-        width: 100%;
-    }
-    .product-img{
-        max-height: 400px;
-        max-width: 60%;
-
-    }
-
-</style>

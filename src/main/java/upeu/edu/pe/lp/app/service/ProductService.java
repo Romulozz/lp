@@ -8,6 +8,7 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 public class ProductService {
@@ -26,6 +27,13 @@ public class ProductService {
     public Iterable<ProductEntity> getProductsByUser(UserEntity user){
         return productRepository.getProductsByUser(user);
     }
+    
+     public  Optional<ProductEntity> getProductByid(Integer id){
+         
+         return productRepository.getProductByid(id);
+     }
+
+    
     public ProductEntity getProductById(Integer id){
         return productRepository.getProductById(id);
     }

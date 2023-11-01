@@ -1,9 +1,7 @@
 package upeu.edu.pe.lp.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -19,7 +17,7 @@ public class OrderEntity {
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
-    private BigDecimal totalAmount;
+    private double totalAmount;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -29,6 +27,16 @@ public class OrderEntity {
     public OrderEntity() {
     }
 
+    public OrderEntity(Integer id, String numero, double total, LocalDateTime orderDate, double totalAmount, UserEntity userEntity) {
+        this.id = id;
+        this.numero = numero;
+        this.total = total;
+        this.orderDate = orderDate;
+        this.totalAmount = totalAmount;
+        this.userEntity = userEntity;
+    }
+
+   
  
     
 
@@ -48,13 +56,15 @@ public class OrderEntity {
         this.orderDate = orderDate;
     }
 
-    public BigDecimal getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
+
+
 
     public UserEntity getUserEntity() {
         return userEntity;

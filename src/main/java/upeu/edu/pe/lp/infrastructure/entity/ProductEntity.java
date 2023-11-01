@@ -17,7 +17,7 @@ public class ProductEntity {
     private String name;
     private String description;
     private String image;
-    private BigDecimal price;
+    private double price;
     
     private LocalDateTime dataCreated;
     private LocalDateTime dataUpdated;
@@ -69,13 +69,15 @@ public class ProductEntity {
         this.image = image;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
+
+    
 
     public LocalDateTime getDataCreated() {
         return dataCreated;

@@ -1,5 +1,6 @@
-package upeu.edu.pe.lp.infrastructure.adapter;
+ package upeu.edu.pe.lp.infrastructure.adapter;
 
+import java.util.Optional;
 import org.springframework.stereotype.Repository;
 import upeu.edu.pe.lp.app.repository.ProductRepository;
 import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
@@ -37,4 +38,11 @@ public class ProductRepositoryImpl implements ProductRepository {
     public void deleteProductById(Integer id) {
         productCrudRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<ProductEntity> getProductByid(Integer id) {
+        return productCrudRepository.findById(id);
+    }
+
+   
 }
