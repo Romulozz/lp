@@ -28,12 +28,12 @@ public class LoginController {
         this.userService = userService;
     }
     
-    @GetMapping("")
+    @GetMapping("/show-form")
     public String showLoginForm(){
         return "login/login";
     }
     
-    @PostMapping("")
+    @PostMapping("/welcome")
     public String LoginUser(@ModelAttribute("loginForm") UserEntity loginForm ,Model model){
         String email = loginForm.getEmail();
         String password = loginForm.getPassword();
