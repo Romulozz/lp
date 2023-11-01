@@ -5,22 +5,44 @@
 package upeu.edu.pe.lp.infrastructure.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import upeu.edu.pe.lp.app.service.UserService;
+import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 /**
  *
  * @author Aarón López
  */
 
-
 @Controller
-@RequestMapping("/login-ad-us")
+@RequestMapping("/login")
 public class LoginController {
 
-    @GetMapping("/{login}")
-    public String login() {
+    private final UserService userService;
 
-        return ("login-ad-us/login");
+    public LoginController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @GetMapping("")
+    public String showLoginForm(){
+        return "login/login";
+    }
+    
+    @PostMapping("")
+    public String LoginUser(@ModelAttribute("loginForm") UserEntity loginForm ,Model model){
+        String email = loginForm.getEmail();
+        String password = loginForm.getPassword();
+        
+        if(email == null && password == null){
+            return "redirect:/home";
+        }else{
+            return "redirect:/home";
+        }
+        
     }
 }
