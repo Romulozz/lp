@@ -11,7 +11,7 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 import java.io.IOException;
 
-@CrossOrigin(origins = "http://localhost/4200")
+@CrossOrigin(origins = "http://localhost/4200/")
 @Controller
 @RequestMapping("/admin/products")
 public class ProductoController {
