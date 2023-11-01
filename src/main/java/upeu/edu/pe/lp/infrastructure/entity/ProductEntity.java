@@ -18,7 +18,7 @@ public class ProductEntity {
     private String description;
     private String image;
     private BigDecimal price;
-
+    
     private LocalDateTime dataCreated;
     private LocalDateTime dataUpdated;
     @ManyToOne

@@ -9,17 +9,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link rel="icon" href="../../../../../images/icono.png" type="image/jpeg">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
     </head>
     <body>
 
         <div th:fragment ="header_user">
+                <header style="background-image: url('../../../images/icons/fondo-img.png'); background-size: 100% auto; background-position: center; height:400px;">
+                    <div class="d-flex justify-content-center align-items-center h-100" >
+                        <h1 class="text-center text-white" style="font-size: 90px;">Hacemos que comprar <span style="display: block;">Sea un placer</span></h1>
+                    </div>
+                </header>
 
-
-            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4A2E1E;">
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8B562A; padding: 0">
                 <div class="container">
-                    <a class="navbar-brand text-white" href="/home" style="font-size: 25px;">A Ram Sam Sam</a>
+                    <a class="navbar-brand text-white " href="/home" style="font-size: 25px;">
+                        <img th:src="@{images/icons/logo.png}"  style="max-width: 200px; max-height: 70px; " alt="icono">
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -46,28 +54,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
         <div th:fragment ="footer_user">
-            <footer class="footer py-3" style="background-color: #4A2E1E;"> 
+            <footer class="footer " style="background-color: #8B562A; padding-bottom: 20px">
                 <div class="container">
-                    <p class="m-0 text-center text-white" style="font-size: 20px;"> Curso LP Copyright &copy; Jald 2023</p> 
-                    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+                    <div class="container text-center">
+                        <div style="display: inline-block; border-top: 2px solid white; width: 38.35%; margin-right: 20px;"></div>
+                        <h2 class="text-white" style="font-weight: bold; font-size: 50px; display: inline-block;">A ram sam sam</h2>
+                        <div style="display: inline-block; border-top: 2px solid white; width: 38.35%; margin-left: 20px;"></div>
+                    </div>
+                    <div class="d-flex justify-content-between text-white">
+                        <div>
+                            <h3 style="font-weight: bold">Contactenos</h3>
+                            <p>TARAPOTO-PERÚ</p>
+                            <p>654646454</p>
+                        </div>
+                        <div  class="text-center">
+                            <h3 style="font-weight: bold">Visitanos</h3>
+                            <div>
+                                <img th:src="@{images/icons/icon_f.png}" alt="logo facebook" style="max-width: 70px;">
+                                <img th:src="@{images/icons/icon_i.png}" alt="logo instamgram" style="max-width: 70px;">
+                                <img th:src="@{images/icons/icon_t.png}" alt="logo tik tok" style="max-width: 70px;">
+                            </div>
+
+                        </div>
+                        <div>
+                            <h3 style="font-weight: bold">Enlaces</h3>
+                            <p>Enlace 1</p>
+                            <p>Enlace 2</p>
+                        </div>
+                    </div>
                 </div>
             </footer>
+            <h3 class="text-center" style="padding: 30px 0">A RAM SAM SAM COPORATION - TODOS LOS DERECHOS RESERVADOS</h3>
         </div>
 
 
 
 
         <style>
-            .body{
+
+            body{
                 position: relative;
             }
             .footer{
-                position: absolute;
                 bottom:0px;
-                height: 160px;
+                height: 100%;
                 width: 100%;
+
             }
+            div.text-center {
+                text-align: center;
+            }
+
         </style>
+
+
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 
 
     </body>

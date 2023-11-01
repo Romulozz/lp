@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{user/template_user::head_user}"></head>
-<body>
-<div th:insert="~{user/template_user::header_user}"></div>
-<div class="container">
-    <header class="jumbotron my-4">
-        <h1 class="display-3">Detalles del Producto</h1>
-    </header>
+    <head th:insert="~{user/template_user::head_user}">
+    </head>
+    <body>
 
+        <div th:insert ="~{user/template_user::header_user}"></div>
 
+        <div class="container">
+            <header class="jumbotron my-4">
+                <h1 class="display-3">Detalles del Producto</h1>
+                </header>
 
     
        <div class="card mb-4">
@@ -57,20 +58,16 @@
 
 </html>
 <style>
-    .body {
+    body{
         position: relative;
+        font-family: 'Karantina', sans-serif;
+        text-transform: uppercase;
     }
-
     .footer {
-        position: absolute;
         bottom: 0px;
         height: 60px;
         width: 100%;
     }
-    .product-img{
-        max-height: 400px;
-        max-width: 60%;
 
-    }
 
 </style>
