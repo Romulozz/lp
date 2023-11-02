@@ -77,6 +77,28 @@ public class HomeController {
         return"user/carrito";
     }
     
+    @GetMapping("/delete/cart/{id}")
+ public String deleteProductCart(@PathVariable Integer id, Model model){
+     
+       List<OrderDetailsEntity> ordenesNueva = new ArrayList<OrderDetailsEntity>();
+       
+       for(OrderDetailsEntity detalleOrden: detalles){
+           if(detalleOrden.getProductEntity().getId() != id){
+               ordenesNueva.add(detalleOrden);
+           }
+       }
+       
+       detalles = ordenesNueva;
+        
+        double sumaTotal = 0;
+        sumaTotal = detalles.stream().mapToDouble(dt -> dt.getTotal()).sum();
+        
+        orden.setTotal(sumaTotal);
+        model.addAttribute("cart", detalles);
+        model.addAttribute("orden", orden );
+      
+        return "user/carrito";
+ }    
     
     
     
