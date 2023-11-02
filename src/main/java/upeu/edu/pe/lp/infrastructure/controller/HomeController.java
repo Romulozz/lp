@@ -78,7 +78,7 @@ public class HomeController {
     }
     
     @GetMapping("/delete/cart/{id}")
- public String deleteProductCart(@PathVariable Integer id, Model model){
+    public String deleteProductCart(@PathVariable Integer id, Model model){
      
        List<OrderDetailsEntity> ordenesNueva = new ArrayList<OrderDetailsEntity>();
        
@@ -97,7 +97,7 @@ public class HomeController {
         model.addAttribute("cart", detalles);
         model.addAttribute("orden", orden );
       
-        return "user/carrito";
+        return"user/carrito";
  }    
     
     

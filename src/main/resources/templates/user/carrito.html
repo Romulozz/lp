@@ -36,7 +36,7 @@
                   <td th:text="${dorden.cantidad}"></td>
                   
                   <td th:text="${dorden.total}"></td>
-                    <td><a th:href="@{/delete/cart/{id} ( id = ${dorden.productEntity.id})}" class="btn btn-danger">Quitar</a></td>
+                    <td><a th:href="@{/home/delete/cart/{id} ( id = ${dorden.productEntity.id})}" class="btn btn-danger">Quitar</a></td>
                 </tr>
               </tbody>
             </table>
