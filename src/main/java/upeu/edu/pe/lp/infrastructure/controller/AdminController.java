@@ -25,7 +25,7 @@ public class AdminController {
     @GetMapping
     public String home (Model model){
         model.addAttribute("products",productService.getProducts());
-        return "admin/home_admin";
+        return "admin/home_admin2";
     }
 
 

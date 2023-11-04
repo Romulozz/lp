@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="barra-lateral">
+    <ul>
+        <li class="icono-item">
+            <a class="text-white" href="#">
+                <img th:src="@{/images/icons/home.png}" alt="home icono" style="max-width: 35px; height: auto">
+            </a>
+        </li>
+        <li class="icono-item">
+            <a class="text-white" href="#">
+                <img th:src="@{/images/icons/inventario.png}" alt="home icono" style="max-width: 50px; height: auto">
+            </a>
+        </li>
+        <li class="icono-item">
+            <a class="text-white" href="#" >
+                <img th:src="@{/images/icons/pedidos.png}" alt="home icono" style="max-width: 55px; height: auto; margin: 0px">
+            </a>
+        </li>
+        <li class="icono-item">
+            <a class="text-white" href="#">
+                <img th:src="@{/images/icons/gclientes.png}" alt="home icono" style="max-width: 40px; height: auto">
+            </a>
+        </li>
+    </ul>
+</div>
+
+<header class="transparent-header container" style="padding-top: 40px">
+    <div class="header-content">
+        <a href="#">
+            <img th:src="@{/images/icons/user.png}" style="max-width: 45px; height: auto">
+        </a>
+    </div>
+</header>
+
+
+
+<main class="container">
+    <div class="d-flex justify-content-between">
+        <div class="col-3">
+            <div class="rounded p-1 text-center text-white" style="background-color: #39394F">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 style="font-size: 100px">90</h2>
+                        <h3>Usuarios</h3>
+                    </div>
+                    <div class="col align-items-center">
+                        <img th:src="@{/images/icons/clientes.png}" alt="clientes icono" style="max-width: 80px; height: auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="rounded p-1 text-center text-white" style="background-color: #39394F">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 style="font-size: 100px">14</h2>
+                        <h3>Pedidos</h3>
+                    </div>
+                    <div class="col align-items-center">
+                        <img th:src="@{/images/icons/pedido.png}" alt="clientes icono" style="max-width: 80px; height: auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="rounded p-1 text-center text-white" style="background-color: #39394F">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 style="font-size: 100px">22</h2>
+                        <h3>Productos</h3>
+                    </div>
+                    <div class="col align-items-center">
+                        <img th:src="@{/images/icons/productos.png}" alt="clientes icono" style="max-width: 80px; height: auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container" style="padding-top: 50px; font-size: 25px">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Nombre</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Descripción</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Precio</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Editar</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Eliminar</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Inventario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto: ${products}">
+                <td class="text-white" th:text="${producto.name}" style="text-align: center; background-color:#57596D"></td>
+                <td class="text-white" th:text="${producto.description}" style="text-align: center; background-color:#57596D"></td>
+                <td class="text-white" th:text="${producto.price}" style="text-align: center; background-color:#57596D"></td>
+
+                <td style="text-align: center; background-color:#57596D">
+                    <a class="btn btn-warning text-white"  th:href="@{'/admin/products/edit/' + ${producto.id}}">Editar</a>
+                </td>
+
+                <td style="text-align: center; background-color:#57596D">
+                    <a class="btn btn-danger" href="#" th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
+                </td>
+
+                <td style="text-align: center; background-color:#57596D">
+                    <a class="btn btn-primary">Inventario</a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <a type="button" class="btn btn-success" th:href="@{/admin/products/create}">Crear producto</a>
+</main>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:inline="javascript">
+    function showDeleteConfirmation(id) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Una vez eliminado, no podrás recuperar este producto.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirige a la URL de eliminación del producto
+                window.location.href = '/admin/products/delete/' + id;
+            }
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+<style>
+    html,body{
+        height: 100%;
+    }
+    body{
+        background-color: #57596D;
+        font-family: 'Karantina', sans-serif;
+        text-transform: uppercase;
+    }
+    main{
+        padding-top: 40px;
+        padding-left: 100px!important;
+        margin-left: 400px;
+    }
+    .header-content {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+    }
+
+    .barra-lateral {
+        width: 100px;
+        background-color: #2F2F44;
+        color: white;
+        padding: 60px 20px;
+        height: 100%;
+        position: fixed;
+    }
+
+    .barra-lateral ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .barra-lateral li {
+        margin-bottom: 10px;
+        padding-top: 20px;
+    }
+    .icono-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .rounded{
+        border-radius: 30px!important;
+    }
+
+
+
+
+</style>
+
