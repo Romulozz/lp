@@ -12,6 +12,14 @@ public class StockService {
     public StockService(StockRepository stockRepository) {
         this.stockRepository = stockRepository;
     }
+
+    public Iterable<StockEntity> getStock(){
+        return stockRepository.getStock();
+    }
+
+    public StockEntity getStockByid(Integer id){
+        return stockRepository.getStockByid(id);
+    }
     public StockEntity saveStock(StockEntity stockEntity){
         return stockRepository.saveStock(stockEntity);
     }

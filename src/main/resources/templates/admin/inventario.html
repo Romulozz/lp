@@ -93,31 +93,21 @@
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Nombre</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Producto</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Balance</th>
                 <th scope="col" class="text-center text-white" style="background-color: #39394F ">Descripción</th>
-                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Precio</th>
-                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Editar</th>
-                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Eliminar</th>
-                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Inventario</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Entradas</th>
+                <th scope="col" class="text-center text-white" style="background-color: #39394F ">Salidas</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="producto: ${products}">
-                <td class="text-white" th:text="${producto.name}" style="text-align: center; background-color:#57596D"></td>
-                <td class="text-white" th:text="${producto.description}" style="text-align: center; background-color:#57596D"></td>
-                <td class="text-white" th:text="${producto.price}" style="text-align: center; background-color:#57596D"></td>
+            <tr th:each="inventario: ${stock}">
+                <td class="text-white" th:text="${inventario.productEntity.name}" style="text-align: center; background-color:#57596D"></td>
+                <td class="text-white" th:text="${inventario.balance}" style="text-align: center; background-color:#57596D"></td>
+                <td class="text-white" th:text="${inventario.descripcion}" style="text-align: center; background-color:#57596D"></td>
+                <td class="text-white" th:text="${inventario.entradas}" style="text-align: center; background-color:#57596D"></td>
+                <td class="text-white" th:text="${inventario.salidas}" style="text-align: center; background-color:#57596D"></td>
 
-                <td style="text-align: center; background-color:#57596D">
-                    <a class="btn btn-warning text-white"  th:href="@{'/admin/products/edit/' + ${producto.id}}">Editar</a>
-                </td>
-
-                <td style="text-align: center; background-color:#57596D">
-                    <a class="btn btn-danger" href="#" th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
-                </td>
-
-                <td style="text-align: center; background-color:#57596D">
-                    <a class="btn btn-primary" th:href="@{/admin/inventario}">Inventario</a>
-                </td>
 
             </tr>
 
@@ -127,7 +117,7 @@
 
     <br>
 
-    <a type="button" class="btn btn-success" th:href="@{/admin/products/create}">Crear producto</a>
+    <a type="button" class="btn btn-success" th:href="@{/admin/products/create}">Añadir Unidades</a>
 </main>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

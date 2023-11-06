@@ -16,6 +16,16 @@ public class StockRepositoryImpl implements StockRepository {
     }
 
     @Override
+    public Iterable<StockEntity> getStock() {
+        return stockCrudRepository.findAll();
+    }
+
+    @Override
+    public StockEntity getStockByid(Integer id) {
+        return null;
+    }
+
+    @Override
     public StockEntity saveStock(StockEntity stockEntity) {
         return stockCrudRepository.save(stockEntity);
     }
