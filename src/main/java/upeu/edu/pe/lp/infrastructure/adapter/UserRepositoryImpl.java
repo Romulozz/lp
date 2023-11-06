@@ -7,6 +7,7 @@ package upeu.edu.pe.lp.infrastructure.adapter;
 import org.springframework.stereotype.Repository;
 import upeu.edu.pe.lp.app.repository.UserRepository;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
+import upeu.edu.pe.lp.infrastructure.entity.UserType;
 
 /**
  *
@@ -22,8 +23,8 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public UserEntity findByEmail(String email) {
-        return userCrudRepository.findByEmail(email);
+    public UserEntity findByUserType(UserType user) {
+       return userCrudRepository.findByUserType(user);
     }
     
     @Override
@@ -36,12 +37,12 @@ public class UserRepositoryImpl implements UserRepository{
     public UserEntity updateUser(UserEntity user) {
         return userCrudRepository.(user);
     }
-    */
+    
     @Override
     public void deleteUserById(Integer id) {
        userCrudRepository.deleteById(id);
     }
-
+    */
     @Override
     public UserEntity getUserById(Integer id) {
         return userCrudRepository.findById(id).get();

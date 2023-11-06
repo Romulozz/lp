@@ -5,6 +5,7 @@
 package upeu.edu.pe.lp.app.repository;
 
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
+import upeu.edu.pe.lp.infrastructure.entity.UserType;
 
 /**
  *
@@ -13,8 +14,8 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 public interface UserRepository {
     
     UserEntity getUserById(Integer id);
-    UserEntity findByEmail(String email);
+    UserEntity findByUserType(UserType user);
     UserEntity saveUser(UserEntity user);
     //UserEntity updateUser(UserEntity user);
-    void deleteUserById(Integer id);
+    //void deleteUserById(Integer id);
 }
