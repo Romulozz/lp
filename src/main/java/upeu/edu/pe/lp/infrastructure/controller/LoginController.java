@@ -28,21 +28,24 @@ public class LoginController {
         this.userService = userService;
     }
     
-    @GetMapping("/show-form")
+    @GetMapping
     public String showLoginForm(){
         return "login/login";
     }
     
-    @PostMapping("/welcome")
-    public String LoginUser(@ModelAttribute("loginForm") UserEntity loginForm ,Model model){
-        String email = loginForm.getEmail();
-        String password = loginForm.getPassword();
+    @PostMapping("")
+    public String LoginUser(@ModelAttribute("loginForm") UserEntity loginForm, Model model){
+     /*
+        UserEntity user = new UserEntity();
+        user.setUserType(UserType.USER);
+        model.addAttribute("user", user);
         
-        if(email == null && password == null){
+        if(!userService.findByUserType(user.getUserType())){
             return "redirect:/home";
         }else{
-            return "redirect:/home";
-        }
-        
+            return "redirect:/admin";
+        }              
+        */
+     return "redirect:/home";
     }
 }

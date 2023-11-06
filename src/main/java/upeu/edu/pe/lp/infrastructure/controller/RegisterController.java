@@ -4,6 +4,8 @@
  */
 package upeu.edu.pe.lp.infrastructure.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,23 +23,22 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 @RequestMapping("/register")
 public class RegisterController {
     
+    private final Logger log = LoggerFactory.getLogger(ProductoController.class);
     private final UserService userService;
 
     public RegisterController(UserService userService) {
         this.userService = userService;
     }
     
-    @GetMapping("")
+    @GetMapping
     public String showRegisterForm() {     
         return "login/register"; // Renderiza la página de registro (register.html)
     }
 
-    @PostMapping("")
-    public String registerUser(@ModelAttribute("user") UserEntity user, Model model) {
-        // Implementa la lógica de registro del usuario
-        model.addAttribute("user", new UserEntity());
+    @PostMapping("/new-user")
+    public String registerUser(UserEntity user) {
+        log.info("Nombre de producto: {}", user);
         userService.saveUser(user);
-        return "redirect:/login"; // Redirige a la página de inicio de sesión después del registro
+        return "redirect:/home"; // Redirige a la página de inicio de sesión después del registro
     }
-
 }
