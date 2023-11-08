@@ -32,7 +32,7 @@ public class ProductoController {
     @PostMapping("/save-product")
     public String saveProduct(ProductEntity product, @RequestParam("img") MultipartFile multipartFile) throws IOException {
         log.info("Nombre de producto: {}", product);
-        productService.saveProductApi(product);
+        productService.saveProduct(product, multipartFile);
 
         // Agregar un retraso de 1 segundo (1000 milisegundos) antes de redirigir
         try {
@@ -68,4 +68,5 @@ public class ProductoController {
         productService.deleteProductById(id);
         return "redirect:/admin";
     }
+
 }
