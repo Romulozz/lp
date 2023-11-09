@@ -22,7 +22,7 @@ public class StockRepositoryImpl implements StockRepository {
 
     @Override
     public StockEntity getStockByid(Integer id) {
-        return null;
+        return stockCrudRepository.findById(id).get();
     }
 
     @Override

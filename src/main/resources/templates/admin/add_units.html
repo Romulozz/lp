@@ -26,7 +26,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="">
+            <a th:href="@{/admin}">
                     <span class="material-icons-sharp">
                         home
                     </span>
@@ -108,41 +108,39 @@
 
         <!-- Recent Orders Table -->
         <div class="recent-orders">
-            <h2>Productos</h2>
+            <h2>Añadir Unidades</h2>
             <table>
                 <thead>
                 <tr>
-                    <th>Nombre</th>
+                    <th>Producto</th>
+                    <th>Balance</th>
                     <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                    <th>Inventario</th>
+                    <th>Entradas</th>
+                    <th>Salidas</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="producto: ${products}">
-                    <td th:text="${producto.name}"></td>
-                    <td th:text="${producto.description}"></td>
-                    <td th:text="${producto.price}"></td>
-                    <td>
-                        <a th:href="@{'/admin/products/edit/' + ${producto.id}}">Editar</a>
-                    </td>
-                    <td>
-                        <a th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
-                    </td>
-                    <td>
-                        <a class=" btn-primary" th:href="@{/admin/inventario}">Inventario</a>
-                    </td>
+                <tr th:each="inventario: ${stock}">
+                    <td th:text="${inventario.productEntity.name}"></td>
+                    <td th:text="${inventario.balance}"></td>
+                    <td th:text="${inventario.descripcion}"></td>
+                    <td th:text="${inventario.entradas}"></td>
+                    <td th:text="${inventario.salidas}"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <!-- End of Recent Orders -->
-        <a type="button" class="btn" th:href="@{/admin/products/create}">Crear producto</a>
 
+        <form th:action="@{/admin/inventario/add/{id}(id=${stock.id})}" method="post">
+                <input class="input-c" type="number" name="cantidad" min="1" max="20" value="0">
+            <button type="submit" class="btn">Añadir Unidades</button>
+        </form>
+
+        <!-- End of Recent Orders -->
     </main>
     <!-- End of Main Content -->
+
 
     <!-- Right Section -->
     <div class="right-section">

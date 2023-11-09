@@ -16,14 +16,15 @@ public class StockService {
     public Iterable<StockEntity> getStock(){
         return stockRepository.getStock();
     }
-
     public StockEntity getStockByid(Integer id){
         return stockRepository.getStockByid(id);
     }
-    public StockEntity saveStock(StockEntity stockEntity){
-        return stockRepository.saveStock(stockEntity);
-    }
+
     public List<StockEntity> getStockByProductEntity(ProductEntity productEntity){
         return stockRepository.getStockByProductEntity(productEntity);
     }
+    public StockEntity saveStock(StockEntity stockEntity) {
+        return stockRepository.saveStock(stockEntity);
+    }
+
 }

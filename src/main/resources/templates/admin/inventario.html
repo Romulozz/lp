@@ -32,7 +32,7 @@
                     </span>
                 <h3>Inicio</h3>
             </a>
-            <a href="#">
+            <a href="">
                     <span class="material-icons-sharp">
                         inventory
                     </span>
@@ -107,34 +107,38 @@
         <!-- End of Analyses -->
 
         <!-- Recent Orders Table -->
-        <div class="recent-orders">
-            <h2>Productos</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Balance</th>
-                    <th>Descripción</th>
-                    <th>Entradas</th>
-                    <th>Salidas</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="inventario: ${stock}">
-                    <td th:text="${inventario.productEntity.name}"></td>
-                    <td th:text="${inventario.balance}"></td>
-                    <td th:text="${inventario.descripcion}"></td>
-                    <td th:text="${inventario.entradas}"></td>
-                    <td th:text="${inventario.salidas}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- End of Recent Orders -->
-        <a type="button" class="btn" th:href="@{/admin/products/create}">Añadir Unidades</a>
+            <div class="recent-orders">
+                <h2>Productos</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Balance</th>
+                        <th>Descripción</th>
+                        <th>Entradas</th>
+                        <th>Salidas</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="inventario: ${stock}">
+                        <td th:text="${inventario.productEntity.name}"></td>
+                        <td th:text="${inventario.balance}"></td>
+                        <td th:text="${inventario.descripcion}"></td>
+                        <td th:text="${inventario.entradas}"></td>
+                        <td th:text="${inventario.salidas}"></td>
+                        <td>
+                            <a th:href="@{/admin/inventario/add-units/{id}(id=${inventario.id})}">Añadir Unidades</a>
+                        </td>
 
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        <!-- End of Recent Orders -->
     </main>
     <!-- End of Main Content -->
+
 
     <!-- Right Section -->
     <div class="right-section">

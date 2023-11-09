@@ -2,10 +2,10 @@ package upeu.edu.pe.lp.infrastructure.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.app.service.StockService;
+import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.StockEntity;
 
 @Controller
@@ -23,7 +23,7 @@ public class AdminController {
     @GetMapping
     public String home (Model model){
         model.addAttribute("products",productService.getProducts());
-        return "home_admin";
+        return "admin/home_admin";
     }
 
     @GetMapping ("/inventario")
@@ -32,6 +32,7 @@ public class AdminController {
         model.addAttribute("stock", inventario);
         return "admin/inventario";
     }
+
 
 
 }
