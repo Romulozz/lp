@@ -1,67 +1,212 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>Ecommerce-login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Agrega tu favicon.ico aquí -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
-    <body>
+
+    <body style="background-color: #8B562A;">
+
         <div th:fragment="header">
-            <nav class="navbar navbar-expand-lg bg-secondary ">
-                <div class="container-fluid">
-                    <a class="navbar-brand" th:href="@{/home}">Home</a>
-                    <a class="navbar-brand" th:href="@{/register}">Register</a>
-                </div>
-            </nav>
         </div>
 
-        <div class="container justify-content-center align-items-center mt-4">
-            
+        <div class="container">
+            <i class="fa fa-user fa-3x" style="color: #8B562A;"></i> <!-- Icono de usuario -->
             <h1>Login</h1>
-            
             <form>
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form2Example1" class="form-control" />
-                    <label class="form-label" for="form2Example1">Email address</label>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="password-label">
+                        Password
+                        <span class="show-password" onclick="showPassword()">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color: #8B562A;">Sign in</button>
+
+                <div class="options">
+                    <label for="remember-me">
+                        <br>
+                        <input type="checkbox" id="remember-me"> Remember Me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                </div>
+                <br>
+                <hr style="margin: 20px 0; border: none; border-top: 1px solid #ccc;">
+                <br>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" style="background-color: #8B562A;"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="social-icon" style="background-color: #8B562A;"><i class="fa fa-google"></i></a>
+                    <a href="#" class="social-icon" style="background-color: #8B562A;"><i class="fa fa-twitter"></i></a>
                 </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <input type="password" id="form2Example2" class="form-control" />
-                    <label class="form-label" for="form2Example2">Password</label>
-                </div>
+                <br>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                <p class="register-link">¿No tienes una cuenta? <a th:href="@{/register}">Regístrate aquí</a></p>
+
             </form>
+
         </div>
 
     </body>
+
     <style>
-        .body{
-            background-image: "/images/image-login-fondo.jpg"
+        body {
+            background-color: #D9D9D9;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .divider:after,
-        .divider:before {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #eee;
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 400px;
+            text-align: center;
         }
-        .h-custom {
-            height: calc(100% - 73px);
+
+        h1 {
+            margin-bottom: 20px;
         }
-        @media (max-width: 450px) {
-            .h-custom {
-                height: 100%;
+
+        form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: 94%;
+            padding: 10px;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            color: #fff;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .options label, .options a {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .show-password {
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .show-password i {
+            font-size: 18px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            border-radius: 50%;
+            margin: 0 10px;
+            color: #fff;
+            line-height: 40px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .register-link {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        /*
+       .social-icon {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        } */
+
+
+        .social-icon {
+            background-color: #8B562A;
+
+            &:hover {
+                transform: scale(1.1);
+                border-radius: 50%;
             }
         }
+
     </style>
+
+
+    <script>
+        function showPassword() {
+            var passwordField = document.getElementById("password");
+            var showPasswordIcon = document.querySelector(".show-password i");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                showPasswordIcon.classList.remove("fa-eye");
+                showPasswordIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                showPasswordIcon.classList.remove("fa-eye-slash");
+                showPasswordIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
 </html>
