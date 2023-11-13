@@ -4,14 +4,14 @@
  */
 package upeu.edu.pe.lp.infrastructure.adapter;
 
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
-import upeu.edu.pe.lp.infrastructure.entity.UserType;
 
 /**
  *
  * @author Luki
  */
 public interface UserCrudRepository extends CrudRepository<UserEntity, Integer>{
-    UserEntity findByUserType(UserType user);
+    Optional<UserEntity> findByemail(String email);
 }
