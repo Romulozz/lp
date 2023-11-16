@@ -1,10 +1,15 @@
 package upeu.edu.pe.lp.infrastructure.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table (name = "orders")
 public class OrderEntity {
@@ -18,77 +23,23 @@ public class OrderEntity {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
     private double totalAmount;
+    private String Orderstatus;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
 
-
-    public OrderEntity() {
+    @Transient
+    private List<OrderDetailsEntity> orderDetails;
+        /*agregar productos a arreglo*/
+     public void addOrdersProduct(List<OrderDetailsEntity> orderDetailsentity){
+        this.setOrderDetails(orderDetailsentity);
     }
-
-    public OrderEntity(Integer id, String numero, double total, LocalDateTime orderDate, double totalAmount, UserEntity userEntity) {
-        this.id = id;
-        this.numero = numero;
-        this.total = total;
-        this.orderDate = orderDate;
-        this.totalAmount = totalAmount;
-        this.userEntity = userEntity;
-    }
-
-   
- 
     
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-
-
-    public UserEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
+    public BigDecimal getTotalOrderPrice(){
+        return getOrderDetails().stream().map(
+                p->p.getTotalPrice()
+        ).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
     
 }
