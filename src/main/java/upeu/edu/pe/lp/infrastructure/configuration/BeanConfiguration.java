@@ -2,6 +2,9 @@ package upeu.edu.pe.lp.infrastructure.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.web.context.WebApplicationContext;
 import upeu.edu.pe.lp.app.repository.OrderDetailsRepository;
 import upeu.edu.pe.lp.app.repository.OrderRepository;
 import upeu.edu.pe.lp.app.repository.ProductRepository;
@@ -38,6 +41,12 @@ public class BeanConfiguration {
     @Bean
     public OrderDetailsService orderDetailsService(OrderDetailsRepository orderDetailsRepository){
         return new OrderDetailsService(orderDetailsRepository);
+    }
+    
+    @Bean
+    @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public  CartService cartService(){
+        return  new CartService();
     }
     
     @Bean
