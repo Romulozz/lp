@@ -5,9 +5,7 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 
 public interface OrderRepository {
-    Iterable<OrderEntity> getOrders();
-    Iterable<OrderEntity> getOrdersByUser(UserEntity user);
-    OrderEntity getOrderById(Integer id);
-    OrderEntity saveOrder(OrderEntity order);
-    void deleteProductById(Integer id);
+    public Iterable<OrderEntity> getOrders();
+    public Iterable<OrderEntity> getOrdersByUser(UserEntity user);
+    public OrderEntity saveOrder(OrderEntity order);
 }

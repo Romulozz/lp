@@ -15,6 +15,5 @@ public interface UserRepository {
     UserEntity findById(Integer id);
     UserEntity findByemail(String email);
     UserEntity saveUser(UserEntity user);
-    //UserEntity updateUser(UserEntity user);
-    //void deleteUserById(Integer id);
+
 }

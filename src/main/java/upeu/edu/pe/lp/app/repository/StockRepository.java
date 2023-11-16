@@ -9,8 +9,6 @@ import java.util.Optional;
 
     public interface StockRepository {
 
-        Iterable<StockEntity> getStock();
-        StockEntity getStockByid(Integer id);
         StockEntity saveStock(StockEntity stockEntity);
         List<StockEntity> getStockByProductEntity(ProductEntity productEntity);
     }

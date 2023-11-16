@@ -4,16 +4,13 @@
  */
 package upeu.edu.pe.lp.app.repository;
 
+import java.util.List;
 import upeu.edu.pe.lp.infrastructure.entity.OrderDetailsEntity;
+import upeu.edu.pe.lp.infrastructure.entity.OrderEntity;
 
-/**
- *
- * @author DIEGO
- */
 public interface OrderDetailsRepository {
-    Iterable<OrderDetailsEntity> getOrderDetails();
-    OrderDetailsEntity saveOrderDetail(OrderDetailsEntity orderDetails);
-    OrderDetailsEntity getOrderDetailById(Integer id);
-    void deleteOrderDetailById(Integer id);
+    public OrderDetailsEntity create (OrderDetailsEntity orderProduct);
+    public Iterable<OrderDetailsEntity> getOrderProducts();
+    public List<OrderDetailsEntity> getOrdersProductByOrder(OrderEntity orderEntity);
     
 }
