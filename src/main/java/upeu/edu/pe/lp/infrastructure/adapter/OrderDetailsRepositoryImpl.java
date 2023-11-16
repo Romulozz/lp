@@ -4,9 +4,11 @@
  */
 package upeu.edu.pe.lp.infrastructure.adapter;
 
+import java.util.List;
 import org.springframework.stereotype.Repository;
 import upeu.edu.pe.lp.app.repository.OrderDetailsRepository;
 import upeu.edu.pe.lp.infrastructure.entity.OrderDetailsEntity;
+import upeu.edu.pe.lp.infrastructure.entity.OrderEntity;
 
 /**
  *
@@ -20,26 +22,23 @@ public class OrderDetailsRepositoryImpl implements OrderDetailsRepository {
     public OrderDetailsRepositoryImpl(OrderDetailsCrudRepository orderDetailsCrudRepository) {
         this.orderDetailsCrudRepository = orderDetailsCrudRepository;
     }
-    
+
     @Override
-    public Iterable<OrderDetailsEntity> getOrderDetails() {
+    public OrderDetailsEntity create(OrderDetailsEntity orderProduct) {
+        return orderDetailsCrudRepository.save(orderProduct);
+    }
+
+    @Override
+    public Iterable<OrderDetailsEntity> getOrderProducts() {
         return orderDetailsCrudRepository.findAll();
+                
     }
 
     @Override
-    public OrderDetailsEntity saveOrderDetail(OrderDetailsEntity orderDetails) {
-        return orderDetailsCrudRepository.save(orderDetails);
+    public List<OrderDetailsEntity> getOrdersProductByOrder(OrderEntity orderEntity) {
+        return orderDetailsCrudRepository.findByOrderEntity(orderEntity);
     }
+    
 
-    @Override
-    public void deleteOrderDetailById(Integer id) {
-        orderDetailsCrudRepository.deleteById(id);
-    }
-
-    @Override
-    public OrderDetailsEntity getOrderDetailById(Integer id) {
-
-        return orderDetailsCrudRepository.findById(id).get();
-    }
     
 }

@@ -9,8 +9,6 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
     Iterable<ProductEntity> getProducts();
     //Lista de productos por usuario
     Iterable<ProductEntity> getProductsByUser(UserEntity user);
-    
-    Optional<ProductEntity> getProductByid(Integer id);
     ProductEntity getProductById(Integer id);
     ProductEntity saveProduct(ProductEntity product);
     void deleteProductById(Integer id);

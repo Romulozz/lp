@@ -38,11 +38,5 @@ public class ProductRepositoryImpl implements ProductRepository {
     public void deleteProductById(Integer id) {
         productCrudRepository.deleteById(id);
     }
-
-    @Override
-    public Optional<ProductEntity> getProductByid(Integer id) {
-        return productCrudRepository.findById(id);
-    }
-
    
 }

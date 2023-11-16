@@ -13,7 +13,6 @@ public class OrderRepositoryImpl implements OrderRepository {
         this.orderCrudRepository = orderCrudRepository;
     }
 
-
     @Override
     public Iterable<OrderEntity> getOrders() {
         return orderCrudRepository.findAll();
@@ -25,17 +24,8 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public OrderEntity getOrderById(Integer id) {
-        return orderCrudRepository.findById(id).get();
-    }
-
-    @Override
     public OrderEntity saveOrder(OrderEntity order) {
         return orderCrudRepository.save(order);
     }
-
-    @Override
-    public void deleteProductById(Integer id) {
-        orderCrudRepository.deleteById(id);
-    }
+    
 }
