@@ -13,13 +13,6 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
-    public Iterable<StockEntity> getStock(){
-        return stockRepository.getStock();
-    }
-    public StockEntity getStockByid(Integer id){
-        return stockRepository.getStockByid(id);
-    }
-
     public List<StockEntity> getStockByProductEntity(ProductEntity productEntity){
         return stockRepository.getStockByProductEntity(productEntity);
     }

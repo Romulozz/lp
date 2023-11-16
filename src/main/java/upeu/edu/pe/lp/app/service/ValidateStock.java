@@ -6,8 +6,10 @@ import upeu.edu.pe.lp.infrastructure.entity.StockEntity;
 import java.util.List;
 
 public class ValidateStock {
+    
     private final StockService stockService;
-    private ValidateStock (StockService stockService){
+
+    public ValidateStock(StockService stockService) {
         this.stockService = stockService;
     }
 

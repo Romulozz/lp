@@ -21,13 +21,7 @@ public class OrderService {
     public Iterable<OrderEntity> getOrdersByUser(UserEntity user){
         return orderRepository.getOrdersByUser(user);
     }
-    public OrderEntity getOrderById(Integer id){
-        return orderRepository.getOrderById(id);
-    }
     public OrderEntity saveOrder(OrderEntity order) {
         return orderRepository.saveOrder(order);
-    }
-    public void deleteOrderById(Integer id){
-        orderRepository.deleteProductById(id);
     }
 }

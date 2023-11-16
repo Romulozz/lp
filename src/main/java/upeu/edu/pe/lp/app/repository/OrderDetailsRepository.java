@@ -10,7 +10,7 @@ import upeu.edu.pe.lp.infrastructure.entity.OrderEntity;
 
 public interface OrderDetailsRepository {
     public OrderDetailsEntity create (OrderDetailsEntity orderProduct);
-    public Iterable<OrderDetailsEntity> getOrderProducts();
-    public List<OrderDetailsEntity> getOrdersProductByOrder(OrderEntity orderEntity);
+    public Iterable<OrderDetailsEntity> getOrderDetails();
+    public List<OrderDetailsEntity> getOrdersDetailsByOrder(OrderEntity orderEntity);
     
 }

@@ -4,8 +4,10 @@
  */
 package upeu.edu.pe.lp.app.service;
 
+import java.util.List;
 import upeu.edu.pe.lp.app.repository.OrderDetailsRepository;
 import upeu.edu.pe.lp.infrastructure.entity.OrderDetailsEntity;
+import upeu.edu.pe.lp.infrastructure.entity.OrderEntity;
 
 /**
  *
@@ -19,21 +21,15 @@ public class OrderDetailsService {
         this.orderDetailsRepository = orderDetailsRepository;
     }
 
-    public Iterable<OrderDetailsEntity> getOrderDetails(){
-         
+    public Iterable<OrderDetailsEntity> getOrderDetails(){        
         return orderDetailsRepository.getOrderDetails();
     }
-    public OrderDetailsEntity saveOrderDetail(OrderDetailsEntity orderDetails){
-    
-        return orderDetailsRepository.saveOrderDetail(orderDetails);
-    }
-    public void deleteOrderDetailById(Integer id){
-        
-        orderDetailsRepository.deleteOrderDetailById(id);
+    public OrderDetailsEntity saveOrderDetails(OrderDetailsEntity orderDetails){  
+        return orderDetailsRepository.create(orderDetails);
     }
     
-    public OrderDetailsEntity getOrderDetailById(Integer id){
-        return orderDetailsRepository.getOrderDetailById(id);
+    public List<OrderDetailsEntity> getOrderDetailsByOrder(OrderEntity orderEntity){
+        return orderDetailsRepository.getOrdersDetailsByOrder(orderEntity);
     }
 
     

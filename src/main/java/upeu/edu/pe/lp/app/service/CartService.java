@@ -35,7 +35,7 @@ public class CartService {
     //Metodo que elimina un producto agregado
     public void removeItemCart(Integer idProduct){
         itemCartHashMap.remove(idProduct);
-        fillList();;
+        fillList();
     }
 
     //Metodo que agrega en un forEach los item cart

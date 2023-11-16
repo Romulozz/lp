@@ -29,13 +29,13 @@ public class OrderDetailsRepositoryImpl implements OrderDetailsRepository {
     }
 
     @Override
-    public Iterable<OrderDetailsEntity> getOrderProducts() {
+    public Iterable<OrderDetailsEntity> getOrderDetails() {
         return orderDetailsCrudRepository.findAll();
                 
     }
 
     @Override
-    public List<OrderDetailsEntity> getOrdersProductByOrder(OrderEntity orderEntity) {
+    public List<OrderDetailsEntity> getOrdersDetailsByOrder(OrderEntity orderEntity) {
         return orderDetailsCrudRepository.findByOrderEntity(orderEntity);
     }
     

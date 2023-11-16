@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ProductService {
     private final ProductRepository productRepository;
     private final UploadFile uploadFile;
-    private Logger LOG = LoggerFactory.getLogger(ProductService.class);
+    private Logger log = LoggerFactory.getLogger(ProductService.class);
 
     public ProductService(ProductRepository productRepository, UploadFile uploadFile) {
         this.productRepository = productRepository;
@@ -28,15 +28,16 @@ public class ProductService {
         return productRepository.getProductsByUser(user);
     }
     
-     public  Optional<ProductEntity> getProductByid(Integer id){
+     public  ProductEntity getProductByid(Integer id){
          
-         return productRepository.getProductByid(id);
+         return productRepository.getProductById(id);
      }
 
     
     public ProductEntity getProductById(Integer id){
         return productRepository.getProductById(id);
     }
+    
     public ProductEntity saveProduct(ProductEntity product, MultipartFile multipartFile) throws IOException {
         if (product.getId() == null) {
             UserEntity user = new UserEntity();
@@ -48,7 +49,7 @@ public class ProductService {
             return productRepository.saveProduct(product);
         } else {
             ProductEntity productDB = productRepository.getProductById(product.getId());
-            LOG.info("product {}", productDB);
+            log.info("product {}", productDB);
 
             //actualizar la imagen del producto
             if (multipartFile.isEmpty()) {
@@ -90,7 +91,7 @@ public class ProductService {
             return productRepository.saveProduct(product);
         } else {
             ProductEntity productDB = productRepository.getProductById(product.getId());
-            LOG.info("product: {}", productDB);
+            log.info("product: {}", productDB);
             //sino se carga la imagen toma la que se le guardo al registro
 
             product.setCode(productDB.getCode());
