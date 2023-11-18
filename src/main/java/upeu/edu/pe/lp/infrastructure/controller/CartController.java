@@ -31,7 +31,7 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @PostMapping("add-product")
+    @PostMapping("/add-product")
     public String addProductCart(@RequestParam Integer quantity, @RequestParam Integer idProduct, @RequestParam String nameProduct, @RequestParam BigDecimal price) {
         cartService.addItemCart(idProduct, nameProduct, quantity, price);
         showCart();
@@ -46,7 +46,7 @@ public class CartController {
        showCart();
        model.addAttribute("cart", cartService.getItemCarts());
        model.addAttribute("total", cartService.getTotalCart());
-       model.addAttribute("id", httpSession.getAttribute("iduser").toString());
+       model.addAttribute("id"); //httpSession.getAttribute("iduser").toString());
        return "user/cart/cart";
     }
     @GetMapping("/delete-item-cart/{id}")

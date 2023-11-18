@@ -41,5 +41,7 @@ public class OrderEntity {
                 p->p.getTotalPrice()
         ).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
+
+
     
 }
