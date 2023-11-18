@@ -14,6 +14,11 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
+    public OrderEntity createOrder(OrderEntity order) {
+        return orderCrudRepository.save(order);
+    }
+
+    @Override
     public Iterable<OrderEntity> getOrders() {
         return orderCrudRepository.findAll();
     }
@@ -23,9 +28,6 @@ public class OrderRepositoryImpl implements OrderRepository {
         return orderCrudRepository.findByUserEntity(user);
     }
 
-    @Override
-    public OrderEntity saveOrder(OrderEntity order) {
-        return orderCrudRepository.save(order);
-    }
+   
     
 }
