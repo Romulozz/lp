@@ -20,17 +20,20 @@ public class OrderDetailsService {
     public OrderDetailsService(OrderDetailsRepository orderDetailsRepository) {
         this.orderDetailsRepository = orderDetailsRepository;
     }
-
-    public Iterable<OrderDetailsEntity> getOrderDetails(){        
-        return orderDetailsRepository.getOrderDetails();
-    }
-    public OrderDetailsEntity saveOrderDetails(OrderDetailsEntity orderDetails){  
-        return orderDetailsRepository.create(orderDetails);
-    }
     
-    public List<OrderDetailsEntity> getOrderDetailsByOrder(OrderEntity orderEntity){
-        return orderDetailsRepository.getOrdersDetailsByOrder(orderEntity);
+    public OrderDetailsEntity create (OrderDetailsEntity orderProduct){
+         return orderDetailsRepository.create(orderProduct);
+     }
+    public Iterable<OrderDetailsEntity> getOrderProducts(){
+        return orderDetailsRepository.getOrderProducts();
+        
     }
+    public List<OrderDetailsEntity> getOrdersProductByOrder(OrderEntity orderEntity){
+        return orderDetailsRepository.getOrdersDetailsByOrder(orderEntity);
+    } 
+    
+
+   
 
     
 }

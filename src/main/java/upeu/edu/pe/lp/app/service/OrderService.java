@@ -14,14 +14,17 @@ public class OrderService {
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
-
+    
+      public OrderEntity createOrder(OrderEntity order){
+          return orderRepository.createOrder(order);
+      }
     public Iterable<OrderEntity> getOrders(){
         return orderRepository.getOrders();
+        
     }
     public Iterable<OrderEntity> getOrdersByUser(UserEntity user){
         return orderRepository.getOrdersByUser(user);
     }
-    public OrderEntity saveOrder(OrderEntity order) {
-        return orderRepository.saveOrder(order);
-    }
+
+  
 }
