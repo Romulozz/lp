@@ -12,30 +12,33 @@
                 </header>
 
     
-       <div class="card mb-4">
+      <div class="card mb-4">
         <div class="card-body">
           <div class="row">
             <div class="col-lg-6">
               <a href="#"> <img class="img-fluid rounded"
-                th:src="@{'/images/' + ${producto.image}}"  alt="">
+                th:src="@{/images/{img}  (img = ${product.image})} "  alt="">
               </a>
             </div>
             <div class="col-lg-6">
-              <form th:action="@{/home/cart}" method="POST">
-                  <input type="hidden" th:value="${producto.id} " name="id">
-                <h2 class="card-title" th:text="${producto.name}"></h2>
+              <form th:action="@{/user/cart/add-product}" method="POST">
+			  <input type="hidden" th:value="${product.id}" name="idProduct">
+			  <input type="hidden" th:value="${product.name}" name="nameProduct">
+                <input type="hidden" th:value="${product.price}" name="price">
+
+                <h2 class="card-title" th:text="${product.name}"></h2>
 
                 <ul class="list-group">
-                  <li class="list-group-item"><h5 th:text="'Precio: ' + ${producto.price}"> </h5></li>
+                  <li class="list-group-item"><h5 th:text=" 'Precio : S/.'+ ${product.price}"></h5></li>
+                  <li class="list-group-item"><h5 th:text=" 'Stock : '+ ${stock}+ ' unidades'"></h5></li>
                   <li class="list-group-item">
-                    <p th:text="'Descripcion: '+ ${producto.description} "> </p>
+                    <p th:text="'Descripción: '+ ${product.description}"></p>
                   </li>
                   <li class="list-group-item"><h6>
-                    Cantidad: <input type="number" id="cantidad" name="cantidad" autocomplete="off"
+                    Cantidad: <input type="number" id="quantity" name="quantity" autocomplete="off"
                     min="1" max="5" value="1">
                   </h6></li>
                 </ul>
-                <br>
 
 
                 <button type="submit"  class="btn btn-dark">Añadir al carrito </button>

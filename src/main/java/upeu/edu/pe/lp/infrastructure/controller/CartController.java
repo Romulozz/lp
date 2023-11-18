@@ -8,10 +8,12 @@ import jakarta.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import upeu.edu.pe.lp.app.service.CartService;
 
@@ -19,6 +21,8 @@ import upeu.edu.pe.lp.app.service.CartService;
  *
  * @author DIEGO
  */
+@Controller
+@RequestMapping("/user/cart")
 public class CartController {
     private final CartService cartService;
     private final Logger log = LoggerFactory.getLogger(CartController.class);
