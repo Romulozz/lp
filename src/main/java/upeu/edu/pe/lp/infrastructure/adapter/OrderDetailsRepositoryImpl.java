@@ -25,19 +25,20 @@ public class OrderDetailsRepositoryImpl implements OrderDetailsRepository {
 
     @Override
     public OrderDetailsEntity create(OrderDetailsEntity orderProduct) {
-        return orderDetailsCrudRepository.save(orderProduct);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Iterable<OrderDetailsEntity> getOrderDetails() {
-        return orderDetailsCrudRepository.findAll();
-                
+    public Iterable<OrderDetailsEntity> getOrderProducts() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<OrderDetailsEntity> getOrdersDetailsByOrder(OrderEntity orderEntity) {
-        return orderDetailsCrudRepository.findByOrderEntity(orderEntity);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    
     
 
     

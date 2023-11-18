@@ -17,42 +17,50 @@ import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.app.service.StockService;
 import upeu.edu.pe.lp.app.service.UploadFile;
 import upeu.edu.pe.lp.app.service.UserService;
+import upeu.edu.pe.lp.app.service.ValidateStock;
 
 @Configuration
 public class BeanConfiguration {
+
     @Bean
-    public ProductService productService(ProductRepository productRepository, UploadFile uploadFile){
+    public ProductService productService(ProductRepository productRepository, UploadFile uploadFile) {
         return new ProductService(productRepository, uploadFile);
     }
 
     @Bean
-    public StockService stockService (StockRepository stockRepository){
+    public StockService stockService(StockRepository stockRepository) {
         return new StockService(stockRepository);
     }
 
     @Bean
-    public UploadFile uploadFile(){
+    public UploadFile uploadFile() {
         return new UploadFile();
     }
+
     @Bean
     public OrderService orderService(OrderRepository orderRepository) {
         return new OrderService(orderRepository);
     }
-    
+
     @Bean
-    public OrderDetailsService orderDetailsService(OrderDetailsRepository orderDetailsRepository){
+    public OrderDetailsService orderDetailsService(OrderDetailsRepository orderDetailsRepository) {
         return new OrderDetailsService(orderDetailsRepository);
     }
-    
+
     @Bean
     @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public  CartService cartService(){
-        return  new CartService();
+    public CartService cartService() {
+        return new CartService();
     }
-    
+
     @Bean
-    public UserService userService(UserRepository userRepository){
-        return new UserService( userRepository);
+    public UserService userService(UserRepository userRepository) {
+        return new UserService(userRepository);
     }
-    
+
+    @Bean
+    public ValidateStock validateStock(StockService stockService) {
+        return new ValidateStock(stockService);
+    }
+
 }

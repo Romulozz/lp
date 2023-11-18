@@ -29,28 +29,7 @@ public class OrderDetailsController {
     }
     
     
-    @GetMapping("/show-orderDetails")
-    public Iterable <OrderDetailsEntity> showOrderDetails(){
-        return orderDetailsService.getOrderDetails();
-    }
-    
-    
-    @PostMapping("/save-orderDetails")
-    public String saveOrderDetail (@RequestBody OrderDetailsEntity orderDetailsEntity){
-        return orderDetailsService.saveOrderDetail(orderDetailsEntity).toString();
-
-    }
-   @GetMapping("/show-OrderDetails/{id}")
-    public OrderDetailsEntity show(@PathVariable Integer id){
-        return orderDetailsService.getOrderDetailById(id);
-    }
-    
-    
-    @DeleteMapping("/delete-OrderDetails/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteOrderDetail(@PathVariable Integer id) {
-        orderDetailsService.deleteOrderDetailById(id);
-    }
+   
     
     
 }

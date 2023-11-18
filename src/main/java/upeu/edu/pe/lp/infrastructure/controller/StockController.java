@@ -1,39 +1,52 @@
 package upeu.edu.pe.lp.infrastructure.controller;
 
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import upeu.edu.pe.lp.app.service.ProductService;
 import upeu.edu.pe.lp.app.service.StockService;
+import upeu.edu.pe.lp.app.service.ValidateStock;
+import upeu.edu.pe.lp.infrastructure.entity.ProductEntity;
 import upeu.edu.pe.lp.infrastructure.entity.StockEntity;
 
 @Controller
 @RequestMapping("/admin/inventario")
 public class StockController {
-    public final ProductService productService;
-    private final StockService stockService;
+    
+ private final StockService stockService;
+    private final ValidateStock validateStock;
 
-    public StockController(ProductService productService, StockService stockService) {
-        this.productService = productService;
+    public StockController(StockService stockService, ValidateStock validateStock) {
         this.stockService = stockService;
+        this.validateStock = validateStock;
+    }
+    @GetMapping("/{id}")
+    public String show(@PathVariable Integer id, Model model){
+        ProductEntity product = new ProductEntity();
+        product.setId(id);
+        List<StockEntity> stocks = stockService.getStockByProductEntity(product);
+        model.addAttribute("stocks", stocks);
+        model.addAttribute("idproduct", id);
+        return "admin/stock/show";
+        
+    }
+    @GetMapping("create-unit-product/{id}")
+    public String create(@PathVariable Integer id, Model model){
+        model.addAttribute("idproduct", id);
+      return"admin/stock/create";  
+    } 
+    
+    @PostMapping("save-unit-product")
+    public String save(StockEntity stock, @RequestParam("idproduct") Integer idproduct){
+      stock.setDescripcion("entradas");
+      ProductEntity product = new ProductEntity();
+      product.setId(idproduct);
+      stock.setProductEntity(product);
+      stockService.saveStock(validateStock.calculateBalance(stock));
+      return "redirect:/admin";
     }
 
-    @GetMapping("/add-units/{id}")
-    public String addUnits(@PathVariable Integer id, Model model){
-        StockEntity stock = stockService.getStockByid(id);
-        model.addAttribute("stock",stock);
-        return "admin/add_units";
-    }
-
-    @PostMapping("/add/{id}")
-    public String addUnits(@PathVariable Integer id, @RequestParam("cantidad") Integer cantidad) {
-        StockEntity stock = stockService.getStockByid(id);
-            Integer entradasActuales = stock.getEntradas();
-            Integer nuevasEntradas = entradasActuales + cantidad;
-            stock.setEntradas(nuevasEntradas);
-            stockService.saveStock(stock);
-        return "redirect:/admin/inventario"; // Redirecciona a la página de inventario actualizada.
-    }
-
+   
 
 }
