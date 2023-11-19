@@ -28,7 +28,7 @@ public class StockController {
         List<StockEntity> stocks = stockService.getStockByProductEntity(product);
         model.addAttribute("stocks", stocks);
         model.addAttribute("idproduct", id);
-        return "admin/stock/show";
+        return "admin/stock/add_units";
         
     }
     @GetMapping("create-unit-product/{id}")

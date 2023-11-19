@@ -32,7 +32,7 @@
                     </span>
                 <h3>Inicio</h3>
             </a>
-            <a href="#">
+            <a th:href="@{/admin/users}">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
@@ -124,13 +124,13 @@
                 </tr>
                 </tbody>
             </table>
-            <form th:action="@{/admin/inventario/stock/save-unit-product}" method="post">
+            <form th:action="@{/admin/inventario/save-unit-product}" method="post">
                 <input type="hidden" name="idproduct" th:value="${idproduct}">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="unitIn">Cantidad:</label>
                     <div class="col-sm-10">
                         <input type="number" class="input-c" id="entradas"
-                               name="entradas" min="1"  value="0" required autocomplete="off"z>
+                               name="entradas" min="1"  value="0" required autocomplete="off">
                     </div>
                 </div>
                 <button type="submit" class="btn">Añadir Unidades</button>

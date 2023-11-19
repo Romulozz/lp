@@ -626,9 +626,12 @@ main .recent-orders a{
     padding-left: 2rem;
 }
 .input-c{
+    width: 5rem;
     padding: 0.7rem;
     background-color: var(--color-white);
     color:#48b494;
     border: 1px solid #48b494;
 }
-
+.form-group{
+    margin-top: 3rem;
+}
