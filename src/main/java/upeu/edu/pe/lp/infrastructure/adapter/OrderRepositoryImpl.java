@@ -28,6 +28,10 @@ public class OrderRepositoryImpl implements OrderRepository {
         return orderCrudRepository.findByUserEntity(user);
     }
 
-   
-    
+    @Override
+    public Long count() {
+        return orderCrudRepository.count();
+    }
+
+
 }

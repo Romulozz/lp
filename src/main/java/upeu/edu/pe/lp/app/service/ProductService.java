@@ -103,4 +103,13 @@ public class ProductService {
 
     }
 
+    public Long countTotalProducts(){
+        Long countValue = productRepository.count();
+        if (countValue != null) {
+            return countValue;
+        } else {
+            return 0L;
+        }
+    }
+
 }

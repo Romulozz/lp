@@ -32,13 +32,8 @@
                     </span>
                 <h3>Inicio</h3>
             </a>
-            <a th:href="@{/admin/inventario}">
-                    <span class="material-icons-sharp">
-                        inventory
-                    </span>
-                <h3>Inventario</h3>
             </a>
-            <a href="#">
+            <a th:href="@{/admin/users}">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
@@ -73,7 +68,7 @@
             <div class="sales">
                 <div class="status">
                     <div class="info">
-                        <h1>90</h1>
+                        <h1 th:text="${totalUsuarios}"></h1>
                         <h3>Usuarios</h3>
                     </div>
                     <div class="progresss">
@@ -84,7 +79,7 @@
             <div class="visits">
                 <div class="status">
                     <div class="info">
-                        <h1>14</h1>
+                        <h1 th:text="${totalOrder}"></h1>
                         <h3>Pedidos</h3>
                     </div>
                     <div class="progresss">
@@ -95,7 +90,7 @@
             <div class="searches">
                 <div class="status">
                     <div class="info">
-                        <h1>22</h1>
+                        <h1 th:text="${totalProducts}"></h1>
                         <h3>Productos</h3>
                     </div>
                     <div class="progresss">
@@ -132,7 +127,7 @@
                         <a th:onclick="'showDeleteConfirmation(' + ${producto.id} + ');'">Eliminar</a>
                     </td>
                     <td>
-                        <a class=" btn-primary" th:href="@{/admin/inventario}">Inventario</a>
+                        <a class=" btn-primary" th:href="@{/admin/inventario/stock/{id} (id = ${producto.id}) }">Inventario</a>
                     </td>
                 </tr>
                 </tbody>

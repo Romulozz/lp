@@ -8,4 +8,6 @@ public interface OrderRepository {
     public OrderEntity createOrder(OrderEntity order);
     public Iterable<OrderEntity> getOrders();
     public Iterable<OrderEntity> getOrdersByUser(UserEntity user);
+    Long count();
+
 }

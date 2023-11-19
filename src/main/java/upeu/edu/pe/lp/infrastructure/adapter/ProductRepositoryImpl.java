@@ -38,5 +38,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     public void deleteProductById(Integer id) {
         productCrudRepository.deleteById(id);
     }
-   
+
+    @Override
+    public Long count() {
+        return productCrudRepository.count();
+    }
+
 }

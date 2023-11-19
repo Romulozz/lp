@@ -7,14 +7,14 @@ package upeu.edu.pe.lp.app.service;
 import upeu.edu.pe.lp.app.repository.UserRepository;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
-/**
- *
- * @author Luki
- */
+
 public class UserService {
    
 private final UserRepository userRepository;
 
+    public Iterable<UserEntity> getUsers(){
+        return userRepository.getUsers();
+    }
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -29,5 +29,13 @@ private final UserRepository userRepository;
 
     public UserEntity findByemail(String email) {
         return userRepository.findByemail(email);
+    }
+    public Long countTotalUsers(){
+        Long countValue = userRepository.count();
+        if (countValue != null) {
+            return countValue;
+        } else {
+            return 0L;
+        }
     }
 }

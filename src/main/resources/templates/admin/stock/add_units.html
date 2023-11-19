@@ -32,12 +32,6 @@
                     </span>
                 <h3>Inicio</h3>
             </a>
-            <a th:href="@{/admin/inventario}">
-                    <span class="material-icons-sharp">
-                        inventory
-                    </span>
-                <h3>Inventario</h3>
-            </a>
             <a href="#">
                     <span class="material-icons-sharp">
                         person_outline
@@ -121,7 +115,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="inventario: ${stock}">
+                <tr th:each="inventario: ${stocks}">
                     <td th:text="${inventario.productEntity.name}"></td>
                     <td th:text="${inventario.balance}"></td>
                     <td th:text="${inventario.descripcion}"></td>
@@ -130,12 +124,22 @@
                 </tr>
                 </tbody>
             </table>
+            <form th:action="@{/admin/inventario/stock/save-unit-product}" method="post">
+                <input type="hidden" name="idproduct" th:value="${idproduct}">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="unitIn">Cantidad:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="input-c" id="entradas"
+                               name="entradas" min="1"  value="0" required autocomplete="off"z>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Añadir Unidades</button>
+            </form>
+
         </div>
 
-        <form th:action="@{/admin/inventario/add/{id}(id=${stock.id})}" method="post">
-                <input class="input-c" type="number" name="cantidad" min="1" max="20" value="0">
-            <button type="submit" class="btn">Añadir Unidades</button>
-        </form>
+
+
 
         <!-- End of Recent Orders -->
     </main>

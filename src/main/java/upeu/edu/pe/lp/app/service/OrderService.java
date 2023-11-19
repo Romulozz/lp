@@ -26,5 +26,14 @@ public class OrderService {
         return orderRepository.getOrdersByUser(user);
     }
 
+    public Long count(){
+        Long countValue = orderRepository.count();
+        if (countValue != null) {
+            return countValue;
+        } else {
+            return 0L;
+        }
+    }
+
   
 }

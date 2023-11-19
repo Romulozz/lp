@@ -11,9 +11,11 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
  * @author Luki
  */
 public interface UserRepository {
-    
+    Iterable<UserEntity> getUsers();
     UserEntity findById(Integer id);
     UserEntity findByemail(String email);
     UserEntity saveUser(UserEntity user);
+    Long count();
+
 
 }

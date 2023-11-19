@@ -12,4 +12,5 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
     ProductEntity getProductById(Integer id);
     ProductEntity saveProduct(ProductEntity product);
     void deleteProductById(Integer id);
+    Long count();
 }

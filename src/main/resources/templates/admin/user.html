@@ -32,13 +32,8 @@
                     </span>
                 <h3>Inicio</h3>
             </a>
-            <a href="">
-                    <span class="material-icons-sharp">
-                        inventory
-                    </span>
-                <h3>Inventario</h3>
             </a>
-            <a href="#">
+            <a href="">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
@@ -73,7 +68,7 @@
             <div class="sales">
                 <div class="status">
                     <div class="info">
-                        <h1>90</h1>
+                        <h1 th:text="${totalUsuarios}"></h1>
                         <h3>Usuarios</h3>
                     </div>
                     <div class="progresss">
@@ -84,7 +79,7 @@
             <div class="visits">
                 <div class="status">
                     <div class="info">
-                        <h1>14</h1>
+                        <h1 th:text="${totalOrder}"></h1>
                         <h3>Pedidos</h3>
                     </div>
                     <div class="progresss">
@@ -95,7 +90,7 @@
             <div class="searches">
                 <div class="status">
                     <div class="info">
-                        <h1>22</h1>
+                        <h1 th:text="${totalProducts}"></h1>
                         <h3>Productos</h3>
                     </div>
                     <div class="progresss">
@@ -107,38 +102,41 @@
         <!-- End of Analyses -->
 
         <!-- Recent Orders Table -->
-            <div class="recent-orders">
-                <h2>Productos</h2>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Balance</th>
-                        <th>Descripción</th>
-                        <th>Entradas</th>
-                        <th>Salidas</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="inventario: ${stock}">
-                        <td th:text="${inventario.productEntity.name}"></td>
-                        <td th:text="${inventario.balance}"></td>
-                        <td th:text="${inventario.descripcion}"></td>
-                        <td th:text="${inventario.entradas}"></td>
-                        <td th:text="${inventario.salidas}"></td>
-                        <td>
-                            <a th:href="@{/admin/inventario/add-units/{id}(id=${inventario.id})}">Añadir Unidades</a>
-                        </td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="recent-orders">
+            <h2>Usuarios</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Contraseña</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="usuarios: ${users}">
+                    <td th:text="${usuarios.firstname}"></td>
+                    <td th:text="${usuarios.lastname}"></td>
+                    <td th:text="${usuarios.username}"></td>
+                    <td th:text="${usuarios.email}"></td>
+                    <td th:text="${usuarios.cellphone}"></td>
+                    <td th:text="${usuarios.address}"></td>
+                    <td th:text="${usuarios.userType}"></td>
+                    <td th:text="${usuarios.password}"></td>
+                </tr>
+                </tbody>
+                </tbody>
+            </table>
+        </div>
         <!-- End of Recent Orders -->
+
+
     </main>
     <!-- End of Main Content -->
-
 
     <!-- Right Section -->
     <div class="right-section">
