@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Agrega tu favicon.ico aquí -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10"></link>
 
     </head>
 
@@ -22,15 +23,20 @@
                     <label for="email">Email address</label>
                     <input type="email" id="email" class="form-control" required>
                 </div>
+
+
                 <div class="form-group">
-                    <label for="password" class="password-label">
-                        Password
-                        <span class="show-password" onclick="showPassword()">
-                            <i class="fa fa-eye"></i>
-                        </span>
-                    </label>
-                    <input type="password" id="password" class="form-control" required>
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" class="form-control" required/>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i id="password-toggle" class="fa fa-eye" style="cursor: pointer;"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
+
                 <button type="submit" class="btn btn-primary" style="background-color: #8B562A;">Sign in</button>
 
                 <div class="options">
@@ -172,41 +178,89 @@
             text-decoration: underline;
         }
 
-        /*
-       .social-icon {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        } */
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group-append {
+            position: absolute;
+            top: 0;
+            right: 10px; /* Ajusta según sea necesario */
+            bottom: 0;
+            display: flex;
+            align-items: center;
+        }
 
 
         .social-icon {
             background-color: #8B562A;
+            transition: color 0.3s, border 0.3s, transform 0.3s; /* Added transform to the transition */
 
             &:hover {
-                transform: scale(1.1);
                 border-radius: 50%;
+                transform: scale(1.2); /* Increase size on hover */
             }
+
+            &:active{
+                transform: scale(1.1); /* Slightly reduce size when clicked */
+            }
+
         }
 
     </style>
 
 
     <script>
-        function showPassword() {
-            var passwordField = document.getElementById("password");
-            var showPasswordIcon = document.querySelector(".show-password i");
+        const passwordField = document.getElementById('password');
+        const passwordToggle = document.getElementById('password-toggle');
 
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                showPasswordIcon.classList.remove("fa-eye");
-                showPasswordIcon.classList.add("fa-eye-slash");
+        passwordToggle.addEventListener('click', function () {
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordToggle.className = 'fa fa-eye-slash';
             } else {
-                passwordField.type = "password";
-                showPasswordIcon.classList.remove("fa-eye-slash");
-                showPasswordIcon.classList.add("fa-eye");
+                passwordField.type = 'password';
+                passwordToggle.className = 'fa fa-eye';
             }
-        }
+        });
+
+        const rememberMeCheckbox = document.getElementById('remember-me');
+        const emailField = document.getElementById('email');
+
+        rememberMeCheckbox.addEventListener('change', function () {
+            if (this.checked && emailField.value.trim() !== '' && passwordField.value.trim() !== '') {
+                // Guardar datos en localStorage
+                localStorage.setItem('savedEmail', emailField.value.trim());
+                localStorage.setItem('savedPassword', passwordField.value.trim());
+                // Mostrar SweetAlert2 sin afectar el diseño
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Contraseña guardada',
+                    showConfirmButton: false,
+                    timer: 1500  // Auto-cerrar después de 1.5 segundos (ajusta según tus necesidades)
+                });
+            } else {
+                // Puedes agregar aquí un mensaje o lógica adicional si no se cumple la condición
+            }
+        });
+
+        // Restaurar los datos del localStorage al cargar la página
+        window.addEventListener('load', function () {
+            const savedEmail = localStorage.getItem('savedEmail');
+            const savedPassword = localStorage.getItem('savedPassword');
+            if (savedEmail) {
+                emailField.value = savedEmail;
+            }
+
+            if (savedPassword) {
+                passwordField.value = savedPassword;
+            }
+        });
+
     </script>
 
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </html>
