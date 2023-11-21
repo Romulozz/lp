@@ -1,83 +1,107 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmlns:th="http://www.thymeleaf.org">
-    <head th:insert = "~{admin/template_admin::head_admin}">
-    <body>
-        <div th:insert = "~{admin/template_admin::header_admin}"></div>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-        <div class="container">
-            <pre>
-                
+    <head>
+        <title>Ecommerce-create-product</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/create.css}">
+        <link rel="icon" href="../../../../../../images/Icono de la pestaña.png" type="image/jpeg">
 
-            </pre>
-            <h1>Crear Producto</h1>
+    <pre>
+    
 
-            <pre>
-            </pre>
+    </pre>
 
-            <form class="form-horizontal" th:action="@{/admin/products/save-product}" method="post" enctype="multipart/form-data"> 
-                <div class="form-group">
-                    <label class="control-label col-sm-2 h5 font-weight-bold" for="name">Nombre:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="name"
-                               placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+
+    <pre>
+    
+
+    </pre>
+
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <main>
+            <div class="container">
+                <h1 class="display-3" style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; text-transform: uppercase; color: #333; text-shadow: 2px 2px 4px #888; margin: 0;">Crear Producto:</h1>
+
+                <form class="form-horizontal" th:action="@{/admin/products/save-product}" method="post" enctype="multipart/form-data">
+
+
+                    <pre> 
+                    
+                    </pre>
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+                    </div> 
+                    <pre>
+                        
+                    </pre>
+
+                    <div class="form-group">
+                        <label for="description">Descripción:</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Ingrese la descripción del producto" required autocomplete="off"></input>
+                    </div> 
+                    <pre>
+                        
+                    </pre>
+
+                    <div class="form-group">
+                        <label for="price">Precio:</label>
+                        <input type="number" class="form-control"  step="any" id="price" name="price" placeholder="Ingrese el precio del producto" autocomplete="off" required>
                     </div>
-                </div>
+                    <pre>
+                        
+                    </pre>
 
-                <pre>
-                </pre>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2 h5 font-weight-bold" for="description">Descripción:</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" id="description" name="description"
-                                  placeholder="Ingrese la descripcion del producto" required
-                                  autocomplete="off"> </textarea>
-                    </div>
-                </div>
-
-                <pre>
-                </pre>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2 h5 font-weight-bold" for="price">Precio:</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" step="any" id="price" name="price"
-                               placeholder="Ingrese el precio del producto" autocomplete="off" required>
-                    </div>
-                </div>
-
-                <pre>
-                </pre>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2 h5 font-weight-bold" for="img">Imagen:</label>
-                    <div class="col-sm-10">
+                    <div class="form-group">
+                        <label for="img">Imagen:</label>
                         <input type="file" class="form-control-file" id="img" name="img">
                     </div>
-                </div>
-                
-                 <pre>
-                </pre>
 
-                <div class="row">
-                    <div class="col-sm-2">
+                    <div class="form-group">
                         <button type="submit" class="btn btn-success" onclick="showSuccessAlert()">
                             <span class="glyphicon glyphicon-saved"></span> Guardar
-                            <button type="button" class="btn btn-danger" onclick="showCancelAlert()"  style="margin-left: 10px;">Cancelar</button>
                         </button>
+                        <button type="button" class="btn btn-danger" onclick="showCancelAlert()" style="margin-left: 10px;">Cancelar</button>
                     </div>
-                </div>
 
-            </form>  
+                </form>
+            </div>
+        </main>
 
-        </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script th:inline="javascript">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:inline="javascript">
                             function showSuccessAlert() {
                                 Swal.fire({
                                     icon: 'success',
@@ -101,19 +125,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     }
                                 });
                             }
-</script>
+    </script>
+</body>
 
-    </body>
-
-    <div class="footer" th:insert = "~{admin/template_admin::footer_admin}"></div>
-    <style>
-        .body{
-            position: relative;
-        }
-        .footer{
-            bottom:0px;
-            height: 60px;
-            width: 100%;
-        }
-    </style>
 </html>
