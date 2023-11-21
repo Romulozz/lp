@@ -27,18 +27,14 @@ public class RegisterController {
     private final UserService userService;
 
     public RegisterController(UserService userService) {
+
         this.userService = userService;
     }
     
     @GetMapping
     public String showRegisterForm() {     
+
         return "login/register"; // Renderiza la página de registro (register.html)
     }
 
-    @PostMapping("/new-user")
-    public String registerUser(UserEntity user) {
-        log.info("Nombre de producto: {}", user);
-        userService.saveUser(user);
-        return "redirect:/home"; // Redirige a la página de inicio de sesión después del registro
-    }
 }

@@ -30,22 +30,9 @@ public class LoginController {
     
     @GetMapping
     public String showLoginForm(){
+
         return "login/login";
     }
     
-    @PostMapping("")
-    public String LoginUser(@ModelAttribute("loginForm") UserEntity loginForm, Model model){
-     /*
-        UserEntity user = new UserEntity();
-        user.setUserType(UserType.USER);
-        model.addAttribute("user", user);
-        
-        if(!userService.findByUserType(user.getUserType())){
-            return "redirect:/home";
-        }else{
-            return "redirect:/admin";
-        }              
-        */
-     return "redirect:/home";
-    }
+
 }

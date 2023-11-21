@@ -30,6 +30,7 @@ public class OrderDetailsRepositoryImpl implements OrderDetailsRepository {
 
     @Override
     public Iterable<OrderDetailsEntity> getOrderProducts() {
+
         return orderDetailsCrudRepository.findAll();
     }
 
