@@ -27,7 +27,6 @@ public class LoginController {
     public LoginController(UserService userService) {
         this.userService = userService;
     }
-    
     @GetMapping
     public String showLoginForm(){
 

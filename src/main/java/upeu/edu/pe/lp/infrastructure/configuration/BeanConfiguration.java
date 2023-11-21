@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.context.WebApplicationContext;
 import upeu.edu.pe.lp.app.repository.OrderDetailsRepository;
 import upeu.edu.pe.lp.app.repository.OrderRepository;
@@ -65,8 +66,8 @@ public class BeanConfiguration {
         return  new LogoutService();
     }
     @Bean
-    public RegistrationService registrationService(UserService userService){
-        return  new RegistrationService(userService);
+    public RegistrationService registrationService(UserService userService, PasswordEncoder passwordEncoder){
+        return  new RegistrationService(userService, passwordEncoder);
     }
 
 }
