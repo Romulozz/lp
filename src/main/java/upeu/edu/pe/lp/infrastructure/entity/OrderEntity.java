@@ -17,12 +17,9 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private String numero;
-    private double total;
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
-    private double totalAmount;
     private String Orderstatus;
 
     @ManyToOne
