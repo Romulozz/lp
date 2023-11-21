@@ -10,14 +10,7 @@ import upeu.edu.pe.lp.app.repository.OrderRepository;
 import upeu.edu.pe.lp.app.repository.ProductRepository;
 import upeu.edu.pe.lp.app.repository.StockRepository;
 import upeu.edu.pe.lp.app.repository.UserRepository;
-import upeu.edu.pe.lp.app.service.CartService;
-import upeu.edu.pe.lp.app.service.OrderDetailsService;
-import upeu.edu.pe.lp.app.service.OrderService;
-import upeu.edu.pe.lp.app.service.ProductService;
-import upeu.edu.pe.lp.app.service.StockService;
-import upeu.edu.pe.lp.app.service.UploadFile;
-import upeu.edu.pe.lp.app.service.UserService;
-import upeu.edu.pe.lp.app.service.ValidateStock;
+import upeu.edu.pe.lp.app.service.*;
 
 @Configuration
 public class BeanConfiguration {
@@ -61,6 +54,19 @@ public class BeanConfiguration {
     @Bean
     public ValidateStock validateStock(StockService stockService) {
         return new ValidateStock(stockService);
+    }
+
+    @Bean
+    public LoginService loginService(UserService userService){
+        return new LoginService(userService);
+    }
+    @Bean
+    public LogoutService logoutService(){
+        return  new LogoutService();
+    }
+    @Bean
+    public RegistrationService registrationService(UserService userService){
+        return  new RegistrationService(userService);
     }
 
 }
