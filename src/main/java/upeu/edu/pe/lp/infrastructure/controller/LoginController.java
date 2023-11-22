@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import upeu.edu.pe.lp.app.service.LoginService;
 import upeu.edu.pe.lp.app.service.UserService;
 import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
@@ -22,10 +23,10 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 @RequestMapping("/login")
 public class LoginController {
 
-    private final UserService userService;
+    private final LoginService loginService;
 
-    public LoginController(UserService userService) {
-        this.userService = userService;
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
     }
     @GetMapping
     public String showLoginForm(){

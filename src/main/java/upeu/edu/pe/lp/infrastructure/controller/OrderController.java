@@ -47,18 +47,21 @@ public class OrderController {
     }
 
     @GetMapping("/sumary-order")
-    public String showSumaryOrder(Model model) {
-        UserEntity user = userServices.findById(1);
+    public String showSumaryOrder(Model model, HttpSession httpSession) {
+        UserEntity user = userServices.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
         model.addAttribute("cart", cartService.getItemCarts());
         model.addAttribute("total", cartService.getTotalCart());
         model.addAttribute("user", user);
+        model.addAttribute("id", httpSession.getAttribute("iduser").toString());
+        model.addAttribute("nombre", httpSession.getAttribute("name").toString());
+
         return "user/sumaryorder";
 
     }
 
     @GetMapping("/create-order")
-    public String createOrder(RedirectAttributes attributes) {
-        UserEntity user = userServices.findById(1);
+    public String createOrder(RedirectAttributes attributes, HttpSession httpSession) {
+        UserEntity user = userServices.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
         OrderEntity order = new OrderEntity();
         order.setOrderDate(LocalDateTime.now());
         order.setOrderstatus("Proceso");
@@ -86,8 +89,12 @@ public class OrderController {
                 }
         );
 
+
         cartService.removeAllItemCart();
+        attributes.addFlashAttribute("id", httpSession.getAttribute("iduser").toString());
+        attributes.addFlashAttribute("nombre", httpSession.getAttribute("name").toString());
         return "redirect:/home";
+    }
     }
 
 
@@ -96,4 +103,4 @@ public class OrderController {
 
 
 
-}
+

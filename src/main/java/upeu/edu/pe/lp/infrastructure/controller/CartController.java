@@ -42,13 +42,13 @@ public class CartController {
         cartService.getItemCarts().forEach(itemCart -> log.info("Item cart {}",itemCart));
     }
      @GetMapping("/get-cart")
-    public String getCart(Model model,HttpSession httpSession){
-       showCart();
-       model.addAttribute("cart", cartService.getItemCarts());
-       model.addAttribute("total", cartService.getTotalCart());
-       model.addAttribute("id"); //httpSession.getAttribute("iduser").toString());
-       return "user/cart/cart";
-    }
+     public String getCart(Model model,HttpSession httpSession){
+         showCart();
+         model.addAttribute("cart", cartService.getItemCarts());
+         model.addAttribute("total", cartService.getTotalCart());
+         model.addAttribute("id", httpSession.getAttribute("iduser").toString());
+         return "user/cart/cart";
+     }
     @GetMapping("/delete-item-cart/{id}")
     public String deleteItemCart(@PathVariable Integer id){
         cartService.removeItemCart(id);
