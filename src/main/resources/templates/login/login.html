@@ -27,20 +27,32 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password"> Contraseña:</label>
-                    <input type="password"  class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                    <label for="password" class="password-label">
+                        Password
+                    </label>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" class="form-control" required/>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i id="password-toggle" class="fa fa-eye" style="cursor: pointer;"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
+                <div class=" ingresar form-group">
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-dark"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button>
                     </div>
                 </div>
             </form>
-            <a th:href="@{/register}" class="card-link">Registrarse</a>
+            <span>¿No tienes cuenta? </span><a th:href="@{/register}" class="card-link"><b>Registrarse</b></a>
 
-
-
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=100082953561650&mibextid=LQQJ4d" target="_blank" class="social-icon"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/omia_coffee/" target="_blank" class="social-icon"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+            </div>
 
         </div>
 
@@ -58,7 +70,7 @@
         }
 
         .container {
-            background-color: #fff;
+            background-color: rgba(255,255,255,0.7);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             padding: 30px;
@@ -83,7 +95,8 @@
         }
 
         .form-control {
-            border: 2px solid #ccc;
+            border: 2px none;
+            background-color: white;
             border-radius: 4px;
             width: 94%;
             padding: 10px;
@@ -109,6 +122,15 @@
             background-color: #0056b3;
         }
 
+        .btn-dark{
+            background-color: #8B562A;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            color: white;
+            width: 100%;
+        }
+
         .options {
             display: flex;
             justify-content: space-between;
@@ -129,10 +151,15 @@
             font-size: 18px;
         }
 
+        .card-link{
+            color: black;
+        }
+
         .social-icons {
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 10px;
         }
 
         .social-icons a {
@@ -140,7 +167,7 @@
             text-align: center;
             width: 40px;
             height: 40px;
-            background-color: #007bff;
+            background-color: #8B562A;
             border-radius: 50%;
             margin: 0 10px;
             color: #fff;
