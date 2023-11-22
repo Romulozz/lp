@@ -5,7 +5,6 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 
 public class RegistrationService {
     private final UserService userServices;
-
      private final PasswordEncoder passwordEncoder;
 
 

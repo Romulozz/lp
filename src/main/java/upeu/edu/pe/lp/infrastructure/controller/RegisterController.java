@@ -31,7 +31,6 @@ public class RegisterController {
     private final RegistrationService registrationService;
     private final Logger log = LoggerFactory.getLogger(RegisterController.class);
 
-
     public RegisterController(RegistrationService registrationService) {
         this.registrationService = registrationService;
     }
@@ -56,7 +55,7 @@ public class RegisterController {
         }
         registrationService.register(userDto.userDtoToUser());
         redirectAttributes.addFlashAttribute("success", "Usuario creado correctamente");
-        return "redirect:/login/login";
+        return "redirect:/login";
     }
 
 }

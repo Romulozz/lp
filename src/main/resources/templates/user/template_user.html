@@ -31,7 +31,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="collapse navbar-collapse">
                         <ul class="navbar-nav" style="margin-left: auto;">
                             <li class="nav-item">
                                 <a class="nav-link text-white" th:href="@{/login}"><i class="fas fa-user navbar-icon" style="font-size: 25px; margin-right: 15px; cursor: pointer;"></i></a>
@@ -39,6 +39,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <li class="nav-item">
                                     <a class="nav-link text-white" th:href="@{/user/cart/get-cart}"><i class="fas fa-shopping-cart navbar-icon" style="font-size: 25px; cursor: pointer;"></i></a>
                                 </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+
+        //Nav cuando el usuario este loggeado
+        <div th:fragment ="user_logged">
+            <header style="background-image: url('../../../images/icons/fondo-img.png'); background-size: 100% auto; background-position: center; height:400px;">
+                <div class="d-flex justify-content-center align-items-center h-100" >
+                    <h1 class="text-center text-white" style="font-size: 90px;">Hacemos que comprar <span style="display: block;">Sea un placer</span></h1>
+                </div>
+            </header>
+
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8B562A; padding: 0">
+                <div class="container">
+                    <a class="navbar-brand text-white " href="/home" style="font-size: 25px;">
+                        <img th:src="@{../images/icons/logo.png}"  style="max-width: 200px; max-height: 70px; " alt="icono">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav" style="margin-left: auto;">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" th:href="@{/logout}"><i class="fas fa-user navbar-icon" style="font-size: 25px; margin-right: 15px; cursor: pointer;"></i>Salir</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" th:href="@{/user/cart/get-cart}"><i class="fas fa-shopping-cart navbar-icon" style="font-size: 25px; cursor: pointer;"></i></a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>

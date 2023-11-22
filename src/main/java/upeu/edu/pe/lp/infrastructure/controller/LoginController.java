@@ -29,9 +29,8 @@ public class LoginController {
         this.loginService = loginService;
     }
     @GetMapping
-    public String showLoginForm(){
-
-        return "login/login";
+    public String login(){
+        return "/login/login";
     }
     
 

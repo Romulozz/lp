@@ -37,6 +37,8 @@ public class CartController {
         showCart();
         return "redirect:/home";
     }
+
+
     //ver en consola
     private void showCart(){
         cartService.getItemCarts().forEach(itemCart -> log.info("Item cart {}",itemCart));

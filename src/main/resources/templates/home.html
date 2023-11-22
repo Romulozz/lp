@@ -8,7 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
 
-        <div th:insert ="~{user/template_user::header_user}"></div>
+        <div th:insert ="~{user/template_user::header_user}" th:if="${id==null}"></div>
+        <div th:insert ="~{user/template_user::user_logged}" th:unless="${id==null}"></div>
+
+
         <div class="container">
 
             <h1 class=" text-center" style="font-size: 60px; font-weight: bold; padding-top: 60px">Los mejores productos</h1>
