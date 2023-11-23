@@ -56,9 +56,9 @@
                                                                     class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" autocomplete="off">
                     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error"></p>
                 </div>
-                <div class="col-sm-2">
-                    <button type="submit" class="btn btn-success" onclick="showSuccessAlert()">Guardar</button>
-                    <button type="button" class="btn btn-danger" onclick="showCancelAlert()" style="margin-left: 10px;">Cancelar</button>
+                <div class="col-sm-2 btn-container">
+                    <button type="submit" class="btn btn-success card-link" onclick="showSuccessAlert()">Guardar</button>
+                    <button type="button" class="btn btn-danger card-link" onclick="showCancelAlert()" style="margin-left: 10px;">Cancelar</button>
                 </div>
             </form>
 
@@ -83,7 +83,7 @@
 
 
         .container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             padding: 30px;
@@ -117,6 +117,24 @@
         .form-control:focus {
             border-color: #007bff;
             box-shadow: none;
+        }
+
+        .btn-container{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-container button{
+            width: calc(50% - 5px);
+        }
+        .card-link{
+            background-color: #8B562A;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            width: 100%;
         }
 
         .btn-primary {
