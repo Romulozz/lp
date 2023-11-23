@@ -57,12 +57,17 @@
                     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="error"></p>
                 </div>
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="submit" class="btn btn-success" onclick="showSuccessAlert()">Guardar</button>
+                    <button type="button" class="btn btn-danger" onclick="showCancelAlert()" style="margin-left: 10px;">Cancelar</button>
                 </div>
             </form>
 
         </div>
 
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script th:src="@{/js/login.js}"></script>
     </body>
 
     <style>

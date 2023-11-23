@@ -55,6 +55,15 @@ public class RegisterController {
         }
         registrationService.register(userDto.userDtoToUser());
         redirectAttributes.addFlashAttribute("success", "Usuario creado correctamente");
+
+
+        // Agregar un retraso de 1 segundo (1000 milisegundos) antes de redirigir
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return "redirect:/login";
     }
 
