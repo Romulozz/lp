@@ -70,7 +70,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" th:href="@{/logout}"><i class="fas fa-sign-out-alt navbar-icon" style="font-size: 25px; cursor: pointer;"></i></a>
+                                <a class="nav-link text-white" onclick="showLogoutAlert(event)" th:href="@{/logout}"><i class="fas fa-sign-out-alt navbar-icon" style="font-size: 25px; cursor: pointer;"></i></a>
                             </li>
 
                         </ul>
@@ -134,9 +134,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         </style>
 
-
         <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
-
     </body>
 </html>

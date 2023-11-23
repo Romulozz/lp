@@ -21,3 +21,19 @@ function showCancelAlert() {
         }
     });
 }
+
+    function showLogoutAlert(event) {
+    event.preventDefault();
+    Swal.fire({
+            icon: 'info',
+            title: '¿Está seguro de que desea cerrar sesion?',
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/login';
+            }
+        });
+    }
