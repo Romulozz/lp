@@ -43,5 +43,14 @@ public class AdminController {
         return "admin/user";
     }
 
+    @GetMapping("/pedidos")
+    public String pedidos (Model model){
+        model.addAttribute("pedidos",orderService.getOrders());
+        model.addAttribute("totalUsuarios", userService.countTotalUsers());
+        model.addAttribute("totalOrder", orderService.count());
+        model.addAttribute("totalProducts", productService.countTotalProducts());
+        return "admin/pedidos";
+    }
+
 
 }
