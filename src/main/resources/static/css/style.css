@@ -635,3 +635,18 @@ main .recent-orders a{
 .form-group{
     margin-top: 3rem;
 }
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Divide el espacio en una columna para el label y tres columnas para el input */
+    gap: 10px; /* Espacio entre el label y el input */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+label {
+    text-align: right; /* Alinea el texto del label a la derecha */
+}
+
+.register-h1{
+    text-align: center;
+}
