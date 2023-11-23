@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label for="cellphone">Teléfono:</label> <input type="text"
                                                                     class="form-control" id="cellphone" name="cellphone"
-                                                                    placeholder="Ingrese su teléfono" autocomplete="off">
+                                                                    placeholder="Ingrese su teléfono" max="9" autocomplete="off">
                     <p th:if="${#fields.hasErrors('cellphone')}" th:errors="*{cellphone}" th:errorclass="error" ></p>
                 </div>
 

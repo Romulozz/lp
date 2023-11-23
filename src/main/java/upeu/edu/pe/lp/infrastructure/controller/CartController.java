@@ -35,6 +35,14 @@ public class CartController {
     public String addProductCart(@RequestParam Integer quantity, @RequestParam Integer idProduct, @RequestParam String nameProduct, @RequestParam BigDecimal price) {
         cartService.addItemCart(idProduct, nameProduct, quantity, price);
         showCart();
+
+        // Agregar un retraso de 1 segundo (1000 milisegundos) antes de redirigir
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return "redirect:/home";
     }
 

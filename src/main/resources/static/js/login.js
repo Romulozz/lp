@@ -6,7 +6,14 @@ function showSuccessAlert() {
         timer: 7000, // Mostrar la alerta durante 3 segundos
     });
 }
-
+function showAddCartAlert() {
+    Swal.fire({
+        icon: 'success',
+        title: '¡Agregado al carrito correctamente!',
+        showConfirmButton: false,
+        timer: 7000, // Mostrar la alerta durante 3 segundos
+    });
+}
 function showCancelAlert() {
     Swal.fire({
         icon: 'info',
