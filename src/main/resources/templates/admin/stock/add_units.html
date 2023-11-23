@@ -32,29 +32,30 @@
                     </span>
                 <h3>Inicio</h3>
             </a>
+            </a>
             <a th:href="@{/admin/users}">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
                 <h3>Usuarios</h3>
             </a>
-            <a href="#">
+            <a th:href="@{/admin/pedidos}">
                     <span class="material-icons-sharp">
                         shop
                     </span>
                 <h3>Pedidos</h3>
             </a>
-            <a href="#">
+            <a th:href="@{/register-admin}">
                     <span class="material-icons-sharp">
                         add
                     </span>
                 <h3>Nuevo Usuario</h3>
             </a>
-            <a href="#">
+            <a th:href="@{/logout}">
                     <span class="material-icons-sharp">
                         logout
                     </span>
-                <h3>Cerrrar Sesion</h3>
+                <h3 onclick="showLogoutAlert(event)" th:href="@{/logout}">Cerrrar Sesion</h3>
             </a>
         </div>
     </aside>
