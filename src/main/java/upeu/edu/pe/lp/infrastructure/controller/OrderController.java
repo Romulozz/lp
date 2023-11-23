@@ -1,6 +1,9 @@
 package upeu.edu.pe.lp.infrastructure.controller;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,7 +23,10 @@ import upeu.edu.pe.lp.infrastructure.entity.UserEntity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 @Controller
 @RequestMapping("/user/order")
@@ -33,10 +39,13 @@ public class OrderController {
     private final Integer entradas = 0;
     private final StockService stockService;
     private final ValidateStock validateStock;
+    
+        private final JavaMailSender javamailsend;
+    private final TemplateEngine templateEngine;
 
     private final Logger log = LoggerFactory.getLogger(OrderController.class);
 
-    public OrderController(CartService cartService, UserService userServices, OrderService orderService, ProductService productService, OrderDetailsService orderProductService, StockService stockService, ValidateStock validateStock) {
+    public OrderController(CartService cartService, UserService userServices, OrderService orderService, ProductService productService, OrderDetailsService orderProductService, StockService stockService, ValidateStock validateStock, JavaMailSender javamailsend, TemplateEngine templateEngine) {
         this.cartService = cartService;
         this.userServices = userServices;
         this.orderService = orderService;
@@ -44,7 +53,11 @@ public class OrderController {
         this.orderProductService = orderProductService;
         this.stockService = stockService;
         this.validateStock = validateStock;
+        this.javamailsend = javamailsend;
+        this.templateEngine = templateEngine;
     }
+
+
 
     @GetMapping("/sumary-order")
     public String showSumaryOrder(Model model, HttpSession httpSession) {
@@ -89,13 +102,48 @@ public class OrderController {
                 }
         );
 
+      // Construir el mensaje de correo electrónico utilizando Thymeleaf
+        String emailBody = buildEmailBodyThymeleaf(user, order, cartService.getItemCarts(), cartService.getTotalCart());
+
+     // Enviar el correo electrónico
+        sendOrderConfirmationEmail(user.getEmail(), "Confirmación de orden", emailBody);
 
         cartService.removeAllItemCart();
         attributes.addFlashAttribute("id", httpSession.getAttribute("iduser").toString());
         attributes.addFlashAttribute("nombre", httpSession.getAttribute("name").toString());
         return "redirect:/home";
     }
+    
+    // Método para enviar el correo electrónico
+    private void sendOrderConfirmationEmail(String to, String subject, String body) {
+        MimeMessage message = javamailsend.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(body, true);
+            javamailsend.send(message);
+        } catch (MessagingException e) {
+            // Manejar la excepción (puedes loguearla, relanzarla, etc.)
+            e.printStackTrace();
+        }
+        
     }
+    
+    // Método para construir el cuerpo del correo electrónico usando Thymeleaf
+private String buildEmailBodyThymeleaf(UserEntity user, OrderEntity order, List<ItemCart> items, BigDecimal total) {
+    // Crear el contexto de Thymeleaf
+    Context context = new Context();
+    context.setVariable("user", user);
+    context.setVariable("order", order);
+    context.setVariable("items", items);
+    context.setVariable("total", total);
+
+    // Procesar la plantilla Thymeleaf
+    return templateEngine.process("user/orderConfirmationEmail", context);
+}
+
+}
 
 
 
