@@ -34,13 +34,20 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest -> authRequest
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasRole("USER").anyRequest().permitAll())
+                        .requestMatchers("/admin/").hasRole("ADMIN")
+                        .requestMatchers("/user/").hasRole("USER")
+                        .requestMatchers("/login", "/register", "/css/", "/js/", "/images/").permitAll()
+                        .anyRequest().authenticated() // 👈 Esto activa protección para rutas como /home
+                )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .successHandler(loginHandler))
+                        .successHandler(loginHandler) // 👈 Tu handler personalizado
+                        .permitAll()
+                )
                 .logout(log -> log
-                        .logoutSuccessUrl("/close"))
+                        .logoutSuccessUrl("/login?logout") // 👈 Redirige al login con parámetro
+                        .permitAll()
+                )
                 .build();
     }
 
