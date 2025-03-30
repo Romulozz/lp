@@ -13,21 +13,19 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Component
 public class loginHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
-        AtomicReference<String> redirectURL = new AtomicReference<>(request.getContextPath());
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+            throws ServletException, IOException {
+
+        String redirectURL = "/home"; // valor por defecto
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        userDetails.getAuthorities().forEach(
-                grantedAuthority -> {
-                    if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
-                        redirectURL.set("/admin");
-                    } else {
-                        redirectURL.set("/home");
-                    }
 
-                }
-        );
-        response.sendRedirect(String.valueOf(redirectURL));
+        if (userDetails.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
+            redirectURL = "/admin";
+        }
+
+        response.sendRedirect(redirectURL);
     }
-
 }
