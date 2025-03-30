@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import upeu.edu.pe.lp.app.service.RegistrationService;
 import upeu.edu.pe.lp.infrastructure.dto.AdminDto;
-import upeu.edu.pe.lp.infrastructure.dto.UserDto;
 
 @Controller
 @RequestMapping("/register-admin")
