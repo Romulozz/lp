@@ -66,9 +66,11 @@
 
 	<build>
 	<resources>
-        <resource encoding="UTF-8">
+        <resource>
             <directory>src/main/resources</directory>
             <filtering>false</filtering>
+			<encoding>UTF-8</encoding>
+
         </resource>
     </resources>
 		<plugins>
