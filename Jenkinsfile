@@ -40,6 +40,12 @@ pipeline {
                 }
             }
         }
+        stage('Run App (H2)') {
+            steps {
+                sh 'nohup mvn spring-boot:run -Dspring-profiles.active=test &'
+    }
+}
+
     }
 
     post {
