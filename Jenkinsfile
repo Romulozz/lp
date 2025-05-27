@@ -42,8 +42,13 @@ pipeline {
         }
         stage('Run App (H2)') {
             steps {
-                sh 'mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test"'
+                sh '''
+            mvn clean package -DskipTests
+            java -jar target/lp-0.0.1-SNAPSHOT.jar --spring.profiles.active=test
+        '''
     }
+}
+
 }
 
 
@@ -57,4 +62,3 @@ pipeline {
             echo '❌ Falló el pipeline.'
         }
     }
-}
