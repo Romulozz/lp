@@ -43,13 +43,12 @@ pipeline {
         stage('Run App (H2)') {
             steps {
                 sh '''
-            mvn clean package -DskipTests
-            java -jar target/lp-0.0.1-SNAPSHOT.jar --spring.profiles.active=test
-        '''
-    }
-}
+                    java -jar target/lp-0.0.1-SNAPSHOT.jar --spring.profiles.active=test
+                '''
+            }
+        }
 
-}
+    }
 
 
     }
