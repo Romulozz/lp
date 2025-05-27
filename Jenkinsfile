@@ -40,6 +40,14 @@ pipeline {
                 }
             }
         }
+        stage('Run App (H2)') {
+            steps {
+                sh 'mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test"'
+        }
+}
+
+}
+
     }
 
     post {
@@ -50,4 +58,4 @@ pipeline {
             echo '❌ Falló el pipeline.'
         }
     }
-}
+
