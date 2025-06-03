@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     tools {
-        maven 'MAVEN_HOME' // Asegúrate de que esté configurado en Jenkins
+        maven 'MAVEN_HOME' // Asegúrate de tener esta herramienta configurada en Jenkins
     }
 
     stages {
         stage('Clone') {
             steps {
                 cleanWs()
-                git branch: 'main', url: 'https://github.com/DiegoAlonso26/ExamenDespliegue.git'
+                git branch: 'pruebas', url: 'https://github.com/Romulozz/lp.git'
             }
         }
 
@@ -41,20 +41,10 @@ pipeline {
             }
         }
 
-        stage('Docker Build & Run') {
-            steps {
-                script {
-                    sh '''
-                        docker stop alonso_app || true
-                        docker rm alonso_app || true
-                        docker rmi micro/product:1.0.0 || true
 
-                        docker build -t micro/product:1.0.0 -f docker/Dockerfile .
-                        docker run -d --name alonso_app -p 8086:8080 micro/product:1.0.0
-                    '''
-                }
-            }
-        }
+    }
+
+
     }
 
     post {
@@ -65,4 +55,3 @@ pipeline {
             echo '❌ Falló el pipeline.'
         }
     }
-}
