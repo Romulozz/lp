@@ -27,11 +27,6 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public UploadFile uploadFile() {
-        return new UploadFile();
-    }
-
-    @Bean
     public OrderService orderService(OrderRepository orderRepository) {
         return new OrderService(orderRepository);
     }
