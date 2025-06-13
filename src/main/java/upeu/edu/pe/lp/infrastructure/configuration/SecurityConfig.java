@@ -9,20 +9,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import upeu.edu.pe.lp.infrastructure.service.UserDetailServiceImpl;
 import upeu.edu.pe.lp.infrastructure.service.loginHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
     private final UserDetailServiceImpl userDetailService;
 
     @Autowired
     private loginHandler loginHandler;
+
     public SecurityConfig(UserDetailServiceImpl userDetailService) {
         this.userDetailService = userDetailService;
     }
-    //metodo de autentificación
+
+    // Método de autenticación
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -30,12 +34,16 @@ public class SecurityConfig {
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
     }
+
+    // Configuración de seguridad HTTP
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authRequest -> authRequest
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasRole("USER").anyRequest().permitAll())
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/user/**")).hasRole("USER")
+                        .anyRequest().permitAll())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(loginHandler))
@@ -44,15 +52,9 @@ public class SecurityConfig {
                 .build();
     }
 
-
-    //metodo para encriptar las contraseñas
+    // Método para encriptar las contraseñas
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
-
-
-
 }
