@@ -1,28 +1,27 @@
-version: '3.8'
-
 services:
+  db:
+    image: mysql:8.0
+    container_name: lp-db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: lp
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - lp_db-data:/var/lib/mysql
+
   app:
     build: .
+    container_name: lp-app
     ports:
       - "8080:8080"
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/lp?serverTimezone=America/Lima&useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/lp
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-
-  db:
-    image: mysql:8.0
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: lp
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-    volumes:
-      - db-data:/var/lib/mysql
+    entrypoint: ["/bin/sh", "-c", "until nc -z db 3306; do echo 'Waiting for db...'; sleep 2; done; java -jar app.jar"]
 
 volumes:
-  db-data:
+  lp_db-data:

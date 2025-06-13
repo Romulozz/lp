@@ -30,7 +30,7 @@ public class LoginController {
     }
     @GetMapping
     public String login(){
-        return "/login/login";
+        return "login/login";
     }
     
 
